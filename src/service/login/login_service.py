@@ -1,0 +1,75 @@
+import sys
+import os
+
+sys.path.append(
+    os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+)
+from src.repository.login.loginRepository import LoginRepository
+from src.util.valid import emailValid, stringValid
+from src.util.response.response import Res
+from src.model.staff import Staff
+
+
+class LoginService:
+    def __init__(self):
+        self.loginRepository = LoginRepository()
+
+    def adminLogin(self, email, password):
+        if emailValid.isEmail(email) is False:
+            return Res(False, "Không phải email")
+        if stringValid.minLength(string=password, min=1, trim=True) is False:
+            return Res(False, "Mật khổng không được trống")
+
+        result = self.loginRepository.getStaffByEmail(email)
+
+        if result is None:
+            return Res(False, "Nhân viên không tồn tại")
+
+        staff = Staff(
+            idnv=result[0],
+            name=result[1],
+            sdt=result[2],
+            email=result[3],
+            sex=result[4],
+            rank=result[5],
+            blockAt=result[6],
+            password=result[7],
+        )
+
+        if staff.password != password:
+            return Res(False, "Mật khẩu không đúng")
+
+        if staff.rank != "admin":
+            return Res(False, "Không có quyền truy cập")
+
+        return Res(True)
+
+    def staffLogin(self, email, password):
+        if emailValid.isEmail(email) is False:
+            return Res(False, "Không phải email")
+        if stringValid.minLength(string=password, min=1, trim=True) is False:
+            return Res(False, "Mật khổng không được trống")
+
+        result = self.loginRepository.getStaffByEmail(email)
+
+        if result is None:
+            return Res(False, "Nhân viên không tồn tại")
+
+        staff = Staff(
+            idnv=result[0],
+            name=result[1],
+            sdt=result[2],
+            email=result[3],
+            sex=result[4],
+            rank=result[5],
+            blockAt=result[6],
+            password=result[7],
+        )
+
+        if staff.password != password:
+            return Res(False, "Mật khẩu không đúng")
+
+        if staff.rank != "staff":
+            return Res(False, "Không có quyền truy cập")
+
+        return Res(True)
