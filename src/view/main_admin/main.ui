@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1001</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>admin</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1001</width>
+      <height>671</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="view">
+     <item>
+      <widget class="QPushButton" name="hello_btn">
+       <property name="styleSheet">
+        <string notr="true">height: 100px;	font-size: 30px;	background-color: transparent;</string>
+       </property>
+       <property name="text">
+        <string>Xin chào</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1001</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuQu_n_l_nh_n_vi_n">
+    <property name="title">
+     <string>Nhân viên</string>
+    </property>
+    <addaction name="all_staff"/>
+    <addaction name="separator"/>
+    <addaction name="add_staff"/>
+   </widget>
+   <widget class="QMenu" name="menuQu_n_l_phim">
+    <property name="title">
+     <string>Phim</string>
+    </property>
+    <addaction name="all_movie"/>
+    <addaction name="separator"/>
+    <addaction name="add_movie"/>
+   </widget>
+   <widget class="QMenu" name="menuL_ch_chi_u">
+    <property name="title">
+     <string>Lịch chiếu</string>
+    </property>
+    <addaction name="all_calendar"/>
+    <addaction name="separator"/>
+    <addaction name="add_calendar"/>
+   </widget>
+   <widget class="QMenu" name="menuTh_ng_k">
+    <property name="title">
+     <string>Thống kê</string>
+    </property>
+    <addaction name="ticket_statistical"/>
+    <addaction name="separator"/>
+    <addaction name="revenue_statistical"/>
+   </widget>
+   <addaction name="menuQu_n_l_nh_n_vi_n"/>
+   <addaction name="menuQu_n_l_phim"/>
+   <addaction name="menuL_ch_chi_u"/>
+   <addaction name="menuTh_ng_k"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="add_staff">
+   <property name="text">
+    <string>Thêm nhân viên</string>
+   </property>
+  </action>
+  <action name="all_staff">
+   <property name="text">
+    <string>Xem toàn bộ</string>
+   </property>
+  </action>
+  <action name="all_movie">
+   <property name="text">
+    <string>Tất cả phim</string>
+   </property>
+  </action>
+  <action name="add_movie">
+   <property name="text">
+    <string>Thêm phim</string>
+   </property>
+  </action>
+  <action name="add_calendar">
+   <property name="text">
+    <string>Tạo lịch</string>
+   </property>
+  </action>
+  <action name="all_calendar">
+   <property name="text">
+    <string>Tất cả lịch</string>
+   </property>
+  </action>
+  <action name="ticket_statistical">
+   <property name="text">
+    <string>Vé phim</string>
+   </property>
+  </action>
+  <action name="revenue_statistical">
+   <property name="text">
+    <string>Doanh thu</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
