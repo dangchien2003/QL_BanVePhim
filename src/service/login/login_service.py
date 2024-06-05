@@ -8,11 +8,13 @@ from src.repository.login.loginRepository import LoginRepository
 from src.util.valid import emailValid, stringValid
 from src.util.response.response import Res
 from src.model.staff import Staff
+from src.util.encryption.hash import Hash
 
 
 class LoginService:
     def __init__(self):
         self.loginRepository = LoginRepository()
+        self.hash = Hash()
 
     def adminLogin(self, email, password):
         if emailValid.isEmail(email) is False:
@@ -36,7 +38,7 @@ class LoginService:
             password=result[7],
         )
 
-        if staff.password != password:
+        if self.hash.verify(staff.password, password) is False:
             return Res(False, "Mật khẩu không đúng")
 
         if staff.rank != "admin":
@@ -66,7 +68,7 @@ class LoginService:
             password=result[7],
         )
 
-        if staff.password != password:
+        if self.hash.verify(staff.password, password) is False:
             return Res(False, "Mật khẩu không đúng")
 
         if staff.rank != "staff":
