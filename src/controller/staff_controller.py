@@ -6,13 +6,15 @@ sys.path.append(
 )
 
 from src.service.staff_service.add import AddService
+from src.service.staff_service.get import GetService
 from src.util.genarate.gen_string import generatePassword
 from src.util.encryption.hash import Hash
 
 
-class AddStaffController:
+class StaffController:
     def __init__(self):
         self.addStaffService = AddService()
+        self.getStaffService = GetService()
 
     def checkEmail(self, email):
         return self.addStaffService.checkEmail(email)
@@ -34,3 +36,12 @@ class AddStaffController:
 
     def convertHashPasswords(self, password: str):
         return Hash().getHash(password)
+
+    def getAllStaffForTable(self):
+        return self.getStaffService.getAllStaffNormal()
+
+    def getOneStaff(self, id):
+        return self.getStaffService.getStaffById(id)
+
+    def findStaff(self, id, name):
+        return self.getStaffService.findStaff(id, name)

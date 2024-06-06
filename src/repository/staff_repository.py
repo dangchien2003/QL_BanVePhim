@@ -18,6 +18,20 @@ class StaffRepository:
 
     def addStaff(self, staff: Staff):
         query = f"INSERT INTO staff(idnv, name, sdt, email, sex, `rank`, password) values('{staff.idnv}', '{staff.name}', '{staff.sdt}', '{staff.email}', '{staff.sex}', '{staff.rank}', '{staff.password}');"
-        print(query)
-
         return self.repository.edit(query)
+
+    def getAll(self):
+        query = "SELECT * FROM staff"
+        return self.repository.getAll(query)
+
+    def getStaffById(self, id):
+        query = f"SELECT * FROM staff WHERE idnv = '{id}'"
+        return self.repository.getOne(query)
+
+    def getStaffByName(self, name):
+        query = f"SELECT * FROM staff WHERE name = '{name}'"
+        return self.repository.getAll(query)
+
+    def getStaffByIdOrName(self, id, name):
+        query = f"SELECT * FROM staff WHERE name = '{name}' or idnv = '{id}'"
+        return self.repository.getAll(query)

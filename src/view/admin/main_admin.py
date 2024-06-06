@@ -6,6 +6,7 @@ sys.path.append(
 )
 from PyQt6 import QtCore, QtGui, QtWidgets
 from src.view.admin.staff.view_add import Ui_AddStaff
+from src.view.admin.staff.info import Ui_info
 
 
 class MainAdmin(QtWidgets.QMainWindow):
@@ -32,6 +33,18 @@ class MainAdmin(QtWidgets.QMainWindow):
         self.menubar = QtWidgets.QMenuBar(parent=self)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1001, 26))
         self.menubar.setObjectName("menubar")
+        self.menubar.setStyleSheet(
+            """ 
+            QMenuBar {
+                border-bottom: 1px solid #dee2e6; 
+                border-radius: 8px;
+            }
+            
+            QMenuBar::item:selected {
+                background: #ced4da;
+            }
+            """
+        )
         self.menuQu_n_l_nh_n_vi_n = QtWidgets.QMenu(parent=self.menubar)
         self.menuQu_n_l_nh_n_vi_n.setObjectName("menuQu_n_l_nh_n_vi_n")
         self.menuQu_n_l_phim = QtWidgets.QMenu(parent=self.menubar)
@@ -114,9 +127,8 @@ class MainAdmin(QtWidgets.QMainWindow):
     def showFrameAllStaff(self):
         self.clearLayout()
         child_widget = QtWidgets.QWidget()
-        # Nếu bạn có lớp Ui_Login được định nghĩa ở nơi khác, bạn có thể thiết lập nó ở đây
-        # child_ui = Ui_Login()
-        # child_ui.setupUi(child_widget)
+        child_ui = Ui_info()
+        child_ui.setupUi(child_widget)
         self.view.addWidget(child_widget)
 
     def showFrameAddStaff(self):

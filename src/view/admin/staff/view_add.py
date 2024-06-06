@@ -5,7 +5,7 @@ sys.path.append(
     os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 )
 from PyQt6 import QtCore, QtGui, QtWidgets
-from src.controller.staff.add_controller import AddStaffController
+from controller.staff_controller import StaffController
 from src.model.staff import Staff
 
 
@@ -13,7 +13,7 @@ class Ui_AddStaff(object):
 
     def __init__(self):
         self.sex = None
-        self.addController = AddStaffController()
+        self.staffController = StaffController()
 
     def setupUi(self, AddStaff):
         AddStaff.setObjectName("AddStaff")
@@ -128,7 +128,7 @@ class Ui_AddStaff(object):
 
     def checkEmail(self, event):
         email = self.email.text()
-        result = self.addController.checkEmail(email)
+        result = self.staffController.checkEmail(email)
         if result.success is False:
             QtWidgets.QMessageBox.warning(None, "Thông báo", result.message)
             return
@@ -136,18 +136,18 @@ class Ui_AddStaff(object):
 
     def checkPassword(self, event):
         password = self.password.text()
-        result = self.addController.checkPassword(password)
+        result = self.staffController.checkPassword(password)
         if result.success is False:
             QtWidgets.QMessageBox.warning(None, "Thông báo", result.message)
             return
         QtWidgets.QMessageBox.information(None, "Thông báo", "Mật khẩu OK")
 
     def randomPassword(self, event):
-        newPassword = self.addController.getNewPassword()
+        newPassword = self.staffController.getNewPassword()
         self.password.setText(newPassword)
 
     def getRank(self):
-        rank = self.addController.convertRank(self.rank.currentText())
+        rank = self.staffController.convertRank(self.rank.currentText())
         if rank is None:
             raise ValueError("Quyền không hợp lệ")
         return rank
@@ -163,17 +163,17 @@ class Ui_AddStaff(object):
             _password = self.password.text()
             email = self.email.text()
             if (
-                self.addController.checkEmail(email).success is False
-                or self.addController.checkPassword(_password).success is False
+                self.staffController.checkEmail(email).success is False
+                or self.staffController.checkPassword(_password).success is False
             ):
                 QtWidgets.QMessageBox.warning(None, "Thông báo", "Kiểm tra thông tin")
                 return
 
-            _password = self.addController.convertHashPasswords(_password)
+            _password = self.staffController.convertHashPasswords(_password)
             name = self.ten_nv.text()
             sdt = self.sdt.text()
             rank = self.getRank()
-            idnv = self.addController.getNewId()
+            idnv = self.staffController.getNewId()
 
             staff = Staff(
                 idnv=idnv,
@@ -194,7 +194,7 @@ class Ui_AddStaff(object):
         staff = self.getInfo()
         if staff is None:
             return
-        result = self.addController.add(staff)
+        result = self.staffController.add(staff)
         if result.success is False:
             QtWidgets.QMessageBox.warning(None, "Lỗi", result.message)
             return
