@@ -1,12 +1,10 @@
 import sys
 import os
 
-sys.path.append(
-    os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
-)
-from src.repository.login.loginRepository import LoginRepository
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+from src.repository.loginRepository import LoginRepository
 from src.util.valid import emailValid, stringValid
-from src.util.response.response import Res
+from src.util.response import Res
 from src.model.staff import Staff
 from src.util.encryption.hash import Hash
 

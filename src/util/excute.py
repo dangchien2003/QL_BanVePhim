@@ -1,8 +1,10 @@
 import sys
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..')))
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 from mysql.connector import Error
-from src.util.connect.mysql_connect import MysqlConnect
+from src.util.mysql_connect import MysqlConnect
+
 
 class Excute:
     def getAll(self, query):
@@ -10,7 +12,7 @@ class Excute:
         connection = mysql.create_connection()
         cursor = connection.cursor()
         result = None
-        
+
         try:
             cursor.execute(query)
             result = cursor.fetchall()
@@ -66,11 +68,11 @@ class Excute:
         cursor = connection.cursor()
         rowcount = 0
         try:
-            cursor.executemany(query, values)
+            cursor.executemany(query, data)
             rowcount = cursor.rowcount
-            if(rowcount == len(data)):
+            if rowcount == len(data):
                 connection.commit()
-            else :
+            else:
                 raise ValueError(f"Lỗi thêm dữ liệu {rowcount}/{len(data)}")
         except (Error, ValueError) as e:
             print(f"Lỗi truy vấn: {e}")
