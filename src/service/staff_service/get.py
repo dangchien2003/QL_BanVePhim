@@ -1,16 +1,11 @@
 import sys
 import os
 
-from util.genarate import gen_time
-
 sys.path.append(
     os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 )
-from src.util.valid import emailValid
 from util.response import Res
 from repository.staff_repository import StaffRepository
-from src.util.genarate.gen_string import generatePassword
-from src.util.genarate import gen_number, gen_time
 from src.util.staff import StaffUtil
 from src.model.staff import Staff
 

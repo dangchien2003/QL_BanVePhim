@@ -7,6 +7,7 @@ sys.path.append(
 
 from src.service.staff_service.add import AddService
 from src.service.staff_service.get import GetService
+from src.service.staff_service.edit import EditService
 from src.util.genarate.gen_string import generatePassword
 from src.util.encryption.hash import Hash
 
@@ -15,6 +16,7 @@ class StaffController:
     def __init__(self):
         self.addStaffService = AddService()
         self.getStaffService = GetService()
+        self.editStaffService = EditService()
 
     def checkEmail(self, email):
         return self.addStaffService.checkEmail(email)
@@ -45,3 +47,17 @@ class StaffController:
 
     def findStaff(self, id, name):
         return self.getStaffService.findStaff(id, name)
+
+    def blockStaff(self, id):
+        return self.editStaffService.blockStaff(id)
+
+    def updateNewPassword(self, id):
+        newPassword = self.getNewPassword()
+        hashPassword = self.convertHashPasswords(newPassword)
+        result = self.editStaffService.updateRandomPassword(id, hashPassword)
+        if result.success == True:
+            result.data = newPassword
+        return result
+
+    def updateStaff(self, staff):
+        return self.editStaffService.updateInfo(staff)

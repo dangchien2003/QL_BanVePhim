@@ -35,3 +35,16 @@ class StaffRepository:
     def getStaffByIdOrName(self, id, name):
         query = f"SELECT * FROM staff WHERE name = '{name}' or idnv = '{id}'"
         return self.repository.getAll(query)
+
+    def insertBlockAt(self, id, time):
+        query = f"UPDATE staff set blockAt = {time} WHERE idnv = '{id}'"
+        return self.repository.edit(query)
+
+    def updatePassword(self, id, password):
+        query = f"UPDATE staff set password = '{password}' WHERE idnv = '{id}'"
+        return self.repository.edit(query)
+
+    def updateInfoStaff(self, staff: Staff):
+        query = f"UPDATE staff set name = '{staff.name}', sdt = '{staff.sdt}', email = '{staff.email}', sex = {staff.sex}, `rank` = '{staff.rank}' WHERE idnv = '{staff.idnv}';"
+        print(query)
+        return self.repository.edit(query)

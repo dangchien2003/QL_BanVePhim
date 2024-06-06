@@ -10,12 +10,14 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtCore import Qt
 import sys
 import os
+import pyperclip
 
 sys.path.append(
     os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 )
 from src.controller.staff_controller import StaffController
 from src.model.staff import Staff
+from src.util import toast
 
 
 class Ui_info(object):
@@ -23,6 +25,7 @@ class Ui_info(object):
     def __init__(self):
         self.staffController = StaffController()
         self.block = None
+        self.clickRow = None
 
     def setupUi(self, info):
         info.setObjectName("info")
@@ -266,6 +269,8 @@ class Ui_info(object):
             else:
                 self.block_radio.setChecked(False)
 
+            self.clickRow = row
+
         return showStaffOnView
 
     def banChangeBlock(self, event):
@@ -285,17 +290,77 @@ class Ui_info(object):
         return
 
     def updateStaff(self, event):
+        if self.block_radio.isChecked() is True:
+            toast.toastWarning("Không thể đổi tài khoản đã khoá")
+            return
+
+        _sex = self.getSex()
+        if _sex is None:
+            toast.toastWarning("Giới tính không hợp lệ")
+            return
+
+        staff = Staff(
+            idnv=self.idnv.text(),
+            name=self.name.text(),
+            sdt=self.sdt.text(),
+            email=self.email.text(),
+            sex=_sex,
+            rank=self.rank.currentText(),
+        )
+
+        update = self.staffController.updateStaff(staff)
+
+        if update.success is False:
+            toast.toastWarning(update.message)
+            return
+
+        toast.toastInfo("Cập nhật thành công")
+        self.table.setItem(self.clickRow, 1, QtWidgets.QTableWidgetItem(staff.name))
+        self.table.setItem(self.clickRow, 2, QtWidgets.QTableWidgetItem(staff.email))
         return
 
     def updatePassword(self, event):
+        if self.block_radio.isChecked() is True:
+            toast.toastWarning("Không thể đổi tài khoản đã khoá")
+            return
+
+        idnv = self.idnv.text()
+
+        update = self.staffController.updateNewPassword(idnv)
+
+        if update.success is False:
+            toast.toastWarning(update.message)
+            return
+        pyperclip.copy(update.data)
+        toast.toastInfo(f"""Đã lưu vào bộ nhớ tạm.\nMật khẩu mới là: {update.data}""")
         return
 
     def blockStaff(self, event):
-        return
+        idnv = self.idnv.text()
+
+        if self.block_radio.isChecked():
+            toast.toastInfo(f"{idnv} đã bị khoá trước đó")
+            return
+
+        result = self.staffController.blockStaff(idnv)
+
+        if result.success is False:
+            toast.toastWarning(result.message)
+            return
+
+        toast.toastInfo(f"Đã khoá: {idnv}")
 
     def showAllStaff(self):
         staffs = self.staffController.getAllStaffForTable()
         self.addTableData(staffs)
+
+    def getSex(self):
+        if self.nam.isChecked() is True:
+            return 1
+        elif self.nu.isChecked() is True:
+            return 0
+        else:
+            return None
 
 
 if __name__ == "__main__":
