@@ -7,6 +7,7 @@ sys.path.append(
 from PyQt6 import QtCore, QtGui, QtWidgets
 from src.view.admin.staff.view_add import Ui_AddStaff
 from src.view.admin.staff.info import Ui_info
+from src.view.admin.movie.add_movie import Ui_addMovie
 
 
 class MainAdmin(QtWidgets.QMainWindow):
@@ -123,6 +124,7 @@ class MainAdmin(QtWidgets.QMainWindow):
     def setEvents(self):
         self.all_staff.triggered.connect(self.showFrameAllStaff)
         self.add_staff.triggered.connect(self.showFrameAddStaff)
+        self.add_movie.triggered.connect(self.showFrameAddMovie)
 
     def showFrameAllStaff(self):
         self.clearLayout()
@@ -135,6 +137,13 @@ class MainAdmin(QtWidgets.QMainWindow):
         self.clearLayout()
         child_widget = QtWidgets.QWidget()
         child_ui = Ui_AddStaff()
+        child_ui.setupUi(child_widget)
+        self.view.addWidget(child_widget)
+
+    def showFrameAddMovie(self):
+        self.clearLayout()
+        child_widget = QtWidgets.QWidget()
+        child_ui = Ui_addMovie()
         child_ui.setupUi(child_widget)
         self.view.addWidget(child_widget)
 
