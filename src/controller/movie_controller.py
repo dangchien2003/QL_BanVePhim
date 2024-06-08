@@ -18,3 +18,6 @@ class MovieController:
 
     def convertDataTable(self, list: list[Movie]):
         return self.movieService.convertListMovieToDataTable(list)
+
+    def allAllMovie(self, listMovie: list[Movie]):
+        return self.movieService.addListMovie(listMovie)

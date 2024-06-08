@@ -7,8 +7,8 @@ from src.util.excute import Excute
 
 class LoginRepository:
     def __init__(self):
-        self.repository = Excute()
+        self.excute = Excute()
 
     def getStaffByEmail(self, email):
         query = f"SELECT * FROM staff WHERE email = '{email}'"
-        return self.repository.getOne(query)
+        return self.excute.getOne(query)

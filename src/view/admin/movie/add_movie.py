@@ -98,6 +98,8 @@ class Ui_addMovie(object):
         self.adult = QtWidgets.QRadioButton(parent=self.groupBox)
         self.adult.setGeometry(QtCore.QRect(180, 20, 51, 20))
         self.adult.setObjectName("adult")
+        self.nocheck = QtWidgets.QRadioButton(parent=self.groupBox)
+        self.nocheck.setVisible(False)
         self.child = QtWidgets.QRadioButton(parent=self.groupBox)
         self.child.setGeometry(QtCore.QRect(5, 20, 81, 20))
         self.child.setObjectName("child")
@@ -161,18 +163,58 @@ class Ui_addMovie(object):
         self.table.cellClicked.connect(self.setSelectCurrent)
 
     def addAllMovie(self, event):
-        print("addAllMovie")
+        result: Res = self.movieController.allAllMovie(self.listMovies)
+
+        if result.success is False:
+            toast.toastWarning(result.message)
+            return
+
+        toast.toastWarning(f"Thêm thành công {result.data}/{len(self.listMovies)}")
+        self.setDefaultSelectTable()
+        self.removeAllDataTable()
         return
 
     def removeMovie(self, event):
-        print("removeMovie")
-        self.setDefaultSelectTable()
+        if self.selectCurrent is None:
+            toast.toastWarning("Chọn phim cần xoá")
+            return
 
+        # Huỷ yêu cầu xoá
+        if (
+            toast.toastYesNoQuestion(
+                f"Bạn có chắc chắn muốn xoá phim {self.table.item(self.selectCurrent, 0).text()}"
+            )
+        ) is False:
+            return
+
+        lengthList = len(self.listMovies)
+        del self.listMovies[self.selectCurrent]
+        newLengthList = len(self.listMovies)
+
+        if newLengthList != lengthList - 1:
+            toast.toastWarning("Xoá không thành công")
+            return
+
+        self.setDefaultSelectTable()
+        resultConvert: Res = self.movieController.convertDataTable(self.listMovies)
+        self.pushMovieInTable(resultConvert.data)
         return
 
     def removeAllMovie(self, event):
-        print("removeAllMovie")
+        # không có dữ liệu
+        if self.table.rowCount() == 0:
+            return
+
+        if toast.toastYesNoQuestion("Tất cả phim sẽ bị xoá") == False:
+            return
+
+        self.removeAllDataTable()
+        return
+
+    def removeAllDataTable(self):
         self.setDefaultSelectTable()
+        self.listMovies = []
+        self.pushMovieInTable([])
         return
 
     def addMovieInTable(self, event):
@@ -190,10 +232,18 @@ class Ui_addMovie(object):
 
         self.setDefaultSelectTable()
         self.pushMovieInTable(resultConvert.data)
+        self.clearData()
         return
 
     def clearDataInput(self, event):
+        self.clearData()
         return
+
+    def clearData(self):
+        self.name_movie.setText("")
+        self.nocheck.setChecked(True)
+        self.price.setValue(0)
+        self.time.setValue(0)
 
     def setSelectCurrent(self, row, column):
         self.selectCurrent = row
@@ -212,14 +262,13 @@ class Ui_addMovie(object):
         return 0
 
     def pushMovieInTable(self, data: tuple):
-        print(data)
         self.table.setRowCount(len(data))
         for row_num, row_data in enumerate(data):
             for col_num, col_data in enumerate(row_data):
-                print(col_data)
                 self.table.setItem(
                     row_num, col_num, QtWidgets.QTableWidgetItem(str(col_data))
                 )
+        return
 
     def getInfoMoviesForm(self):
         name = self.name_movie.text()

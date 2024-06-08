@@ -1,18 +1,18 @@
 class Movie:
     def __init__(self, name, age, minPrice, time, hideAt):
-        self.id = id
         self.name = name
         self.age = age
         self.minPrice = minPrice
         self.time = time
         self.hideAt = hideAt
+        self.hideAt = None
 
     def __init__(self, name, age, minPrice, time):
-        self.id = id
         self.name = name
         self.age = age
         self.minPrice = minPrice
         self.time = time
+        self.hideAt = None
 
     def setId(self, id):
         self.id = id

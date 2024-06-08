@@ -7,3 +7,17 @@ def toastWarning(message):
 
 def toastInfo(message):
     QtWidgets.QMessageBox.information(None, "Thông báo", message)
+
+
+def toastYesNoQuestion(message):
+    reply = QtWidgets.QMessageBox.question(
+        None,
+        "Message",
+        message,
+        QtWidgets.QMessageBox.StandardButton.Yes
+        | QtWidgets.QMessageBox.StandardButton.No,
+        QtWidgets.QMessageBox.StandardButton.No,
+    )
+    if reply == QtWidgets.QMessageBox.StandardButton.Yes:
+        return True
+    return False
