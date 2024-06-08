@@ -29,12 +29,12 @@ class StaffRepository:
         return self.excute.getOne(query)
 
     def getStaffByName(self, name):
-        query = f"SELECT * FROM staff WHERE name = '{name}'"
-        return self.excute.getAll(query)
+        query = f"SELECT * FROM staff WHERE name like '%{name}%'"
+        return self.repository.getAll(query)
 
     def getStaffByIdOrName(self, id, name):
-        query = f"SELECT * FROM staff WHERE name = '{name}' or idnv = '{id}'"
-        return self.excute.getAll(query)
+        query = f"SELECT * FROM staff WHERE name like '%{name}%' or idnv = '{id}'"
+        return self.repository.getAll(query)
 
     def insertBlockAt(self, id, time):
         query = f"UPDATE staff set blockAt = {time} WHERE idnv = '{id}'"
