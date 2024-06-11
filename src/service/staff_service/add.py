@@ -5,8 +5,8 @@ sys.path.append(
     os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 )
 from src.util.valid import emailValid
-from util.response import Res
-from repository.staff_repository import StaffRepository
+from src.util.response import Res
+from src.repository.staff_repository import StaffRepository
 from src.util.encryption.hash import Hash
 from src.util.genarate.gen_string import generatePassword
 from src.util.genarate import gen_number, gen_time

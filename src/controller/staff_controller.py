@@ -1,15 +1,16 @@
 import sys
 import os
 
-sys.path.append(
-    os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
-)
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+
+print(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 
 from src.service.staff_service.add import AddService
 from src.service.staff_service.get import GetService
 from src.service.staff_service.edit import EditService
 from src.util.genarate.gen_string import generatePassword
 from src.util.encryption.hash import Hash
+from src.util.response import Res
 
 
 class StaffController:
@@ -61,3 +62,6 @@ class StaffController:
 
     def updateStaff(self, staff):
         return self.editStaffService.updateInfo(staff)
+
+    def login(self, email, password) -> Res:
+        return self.getStaffService.staffLogin(email, password)

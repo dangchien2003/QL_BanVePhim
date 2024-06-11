@@ -4,7 +4,7 @@ import os
 sys.path.append(
     os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", ".."))
 )
-from util.excute import Excute
+from src.util.excute import Excute
 from src.model.staff import Staff
 
 
@@ -46,5 +46,8 @@ class StaffRepository:
 
     def updateInfoStaff(self, staff: Staff):
         query = f"UPDATE staff set name = '{staff.name}', sdt = '{staff.sdt}', email = '{staff.email}', sex = {staff.sex}, `rank` = '{staff.rank}' WHERE idnv = '{staff.idnv}';"
-        print(query)
         return self.excute.edit(query)
+
+    def getStaffByEmail(self, email):
+        query = f"SELECT idnv, name, sdt, email, sex, `rank`, blockAt, password FROM staff WHERE email = '{email}';"
+        return self.excute.getOne(query)
