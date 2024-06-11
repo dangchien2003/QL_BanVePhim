@@ -13,5 +13,5 @@ class Movie:
     def setCreateAt(self, createAt):
         self.createAt = createAt
 
-    def setCreateAt(self, hideAt):
+    def setHideAt(self, hideAt):
         self.hideAt = hideAt
