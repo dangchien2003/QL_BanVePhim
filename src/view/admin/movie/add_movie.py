@@ -169,7 +169,7 @@ class Ui_addMovie(object):
             toast.toastWarning(result.message)
             return
 
-        toast.toastWarning(f"Thêm thành công {result.data}/{len(self.listMovies)}")
+        toast.toastInfo(f"Thêm thành công {result.data}/{len(self.listMovies)}")
         self.setDefaultSelectTable()
         self.removeAllDataTable()
         return
