@@ -1,11 +1,4 @@
 class Movie:
-    def __init__(self, name, age, minPrice, time, hideAt):
-        self.name = name
-        self.age = age
-        self.minPrice = minPrice
-        self.time = time
-        self.hideAt = hideAt
-        self.hideAt = None
 
     def __init__(self, name, age, minPrice, time):
         self.name = name
@@ -19,3 +12,6 @@ class Movie:
 
     def setCreateAt(self, createAt):
         self.createAt = createAt
+
+    def setCreateAt(self, hideAt):
+        self.hideAt = hideAt
