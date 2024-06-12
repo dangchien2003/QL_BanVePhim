@@ -3,8 +3,6 @@ import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 
-print(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
-
 from src.service.staff_service.add import AddService
 from src.service.staff_service.get import GetService
 from src.service.staff_service.edit import EditService

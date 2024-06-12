@@ -18,7 +18,8 @@ from src.util import toast
 
 
 class Ui_accountStaff(object):
-    def __init__(self, main):
+    def __init__(self, frameMain):
+        self.frameMain = frameMain
         self.staffController = StaffController()
         self.staffCurrent: StaffCurrent = None
 
@@ -132,6 +133,8 @@ class Ui_accountStaff(object):
         return
 
     def setDefaultFrame(self):
+        self.email.setText("abc@gmail.com")
+        self.password.setText("staff")
         self.groupInfo.setVisible(False)
         self.password.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
 
@@ -148,6 +151,8 @@ class Ui_accountStaff(object):
         self.staffCurrent = resultLogin.data
         self.clearFormLogin()
         self.showInfoAccount()
+        self.frameMain.setStaffCurrent(self.staffCurrent)
+        self.frameMain.showFrameWorking()
 
     def showInfoAccount(self):
         self.nameStaff.setText(self.staffCurrent.name)
@@ -163,19 +168,8 @@ class Ui_accountStaff(object):
         self.groupInfo.setVisible(False)
         self.groupLogin.setVisible(True)
         self.showFormLoginEffect.start()
-        # ẩn frame
+        self.frameMain.showRequireLogin()
 
     def clearFormLogin(self):
         self.email.setText("")
         self.password.setText("")
-
-
-if __name__ == "__main__":
-    import sys
-
-    app = QtWidgets.QApplication(sys.argv)
-    accountStaff = QtWidgets.QMainWindow()
-    ui = Ui_accountStaff()
-    ui.setupUi(accountStaff)
-    accountStaff.show()
-    sys.exit(app.exec())

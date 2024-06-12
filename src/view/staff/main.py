@@ -13,10 +13,15 @@ sys.path.append(
 )
 
 from PyQt6 import QtCore, QtGui, QtWidgets
+from src.model.staff_current import StaffCurrent
 from src.view.staff.account_staff import Ui_accountStaff
+from src.view.staff.staff_working import Ui_StafWorking
 
 
 class Ui_Buy_Ticket(object):
+    def __init__(self):
+        self.staffCurrent = None
+
     def setupUi(self, Buy_Ticket):
         Buy_Ticket.setObjectName("Buy_Ticket")
         Buy_Ticket.resize(1108, 701)
@@ -48,20 +53,46 @@ class Ui_Buy_Ticket(object):
         _translate = QtCore.QCoreApplication.translate
         Buy_Ticket.setWindowTitle(_translate("Buy_Ticket", "Buy Ticket"))
         self.showFrameAccountStaff()
+        self.showRequireLogin()
+
+    def showRequireLogin(self):
+        btnRequireLogin = QtWidgets.QPushButton()
+        btnRequireLogin.setStyleSheet("font-size: 25px;  background: transparent;")
+        btnRequireLogin.setObjectName("btnRequireLogin")
+        btnRequireLogin.setText("Đăng nhập để sử dụng")
+        self.clearLayoutWorking()
+        self.layoutWorking.addWidget(btnRequireLogin)
 
     def showFrameAccountStaff(self):
-        self.clearLayout()
+        self.clearLayoutLogin()
         child_widget = QtWidgets.QWidget()
         child_ui = Ui_accountStaff(self)
         child_ui.setupUi(child_widget)
         self.layoutLogin.addWidget(child_widget)
 
-    def clearLayout(self):
+    def showFrameWorking(self):
+        self.clearLayoutWorking()
+        child_widget = QtWidgets.QWidget()
+        child_ui = Ui_StafWorking(self.staffCurrent)
+        child_ui.setupUi(child_widget)
+        self.layoutWorking.addWidget(child_widget)
+
+    def clearLayoutLogin(self):
         while self.layoutLogin.count():
             item = self.layoutLogin.takeAt(0)
             widget = item.widget()
             if widget is not None:
                 widget.deleteLater()
+
+    def clearLayoutWorking(self):
+        while self.layoutWorking.count():
+            item = self.layoutWorking.takeAt(0)
+            widget = item.widget()
+            if widget is not None:
+                widget.deleteLater()
+
+    def setStaffCurrent(self, staffCurrent: StaffCurrent):
+        self.staffCurrent = staffCurrent
 
 
 if __name__ == "__main__":

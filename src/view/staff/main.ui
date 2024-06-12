@@ -34,7 +34,18 @@
       <height>701</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="layoutWorking"/>
+    <layout class="QVBoxLayout" name="layoutWorking">
+     <item>
+      <widget class="QPushButton" name="btnRequireLogin">
+       <property name="styleSheet">
+        <string notr="true">font-size: 25px;  background: transparent;</string>
+       </property>
+       <property name="text">
+        <string>Đăng nhập để sử dụng</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
    <widget class="Line" name="line">
     <property name="geometry">
