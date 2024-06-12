@@ -85,6 +85,46 @@ class Ui_accountStaff(object):
         self.logout.setText(_translate("accountStaff", "Đăng xuất"))
         self.setDefaultFrame()
         self.setEvent()
+        self.setAnimation()
+
+    def setAnimation(self):
+        self.animationLoginSuccess()
+        self.animationLogout()
+
+    def animationLoginSuccess(self):
+        # show
+        # animation for group login
+        effect = QtWidgets.QGraphicsOpacityEffect()
+        self.groupInfo.setGraphicsEffect(effect)
+        effect.setOpacity(1)
+
+        # name animation
+        increaseOpacity = QtCore.QPropertyAnimation(effect, b"opacity")
+
+        # set properties animation
+        increaseOpacity.setDuration(1000)
+        increaseOpacity.setStartValue(0)
+        increaseOpacity.setEndValue(1)
+
+        # add animation in group
+        self.showFormInfoEffect = QtCore.QSequentialAnimationGroup()
+        self.showFormInfoEffect.addAnimation(increaseOpacity)
+        self.showFormInfoEffect.setLoopCount(1)
+
+    def animationLogout(self):
+        # show
+        effect = QtWidgets.QGraphicsOpacityEffect()
+        self.groupLogin.setGraphicsEffect(effect)
+        effect.setOpacity(1)
+        increaseOpacity = QtCore.QPropertyAnimation(effect, b"opacity")
+        increaseOpacity.setDuration(1000)
+        increaseOpacity.setStartValue(0)
+        increaseOpacity.setEndValue(1)
+
+        # add animation in group
+        self.showFormLoginEffect = QtCore.QSequentialAnimationGroup()
+        self.showFormLoginEffect.addAnimation(increaseOpacity)
+        self.showFormLoginEffect.setLoopCount(1)
 
     def setEvent(self):
         self.btnLogin.mousePressEvent = self.clickLogin
@@ -110,16 +150,19 @@ class Ui_accountStaff(object):
         self.showInfoAccount()
 
     def showInfoAccount(self):
+        self.nameStaff.setText(self.staffCurrent.name)
         self.groupLogin.setVisible(False)
         self.groupInfo.setVisible(True)
-        self.nameStaff.setText(self.staffCurrent.name)
+        self.showFormInfoEffect.start()
 
     def clickOut(self, event):
         if toast.toastYesNoQuestion("Bạn đang đăng xuất") is False:
             return
+
+        self.staffCurrent = None
         self.groupInfo.setVisible(False)
         self.groupLogin.setVisible(True)
-        self.staffCurrent = None
+        self.showFormLoginEffect.start()
         # ẩn frame
 
     def clearFormLogin(self):
