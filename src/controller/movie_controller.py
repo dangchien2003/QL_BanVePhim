@@ -43,3 +43,6 @@ class MovieController:
 
     def updateMovie(self, movie: Movie) -> Res:
         return self.movieService.updateOneMovie(movie)
+
+    def getAllMovieInDate(self, date, format) -> Res:
+        return self.movieService.getAllMovieInDate(date, format)

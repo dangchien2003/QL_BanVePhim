@@ -7,7 +7,7 @@ sys.path.append(
 from src.model.movie import Movie
 from src.util.response import Res
 from src.util.genarate import gen_number, gen_time
-from src.util import number
+from src.util import number, time
 from src.repository.movie_repository import MovieRepository
 
 
@@ -186,3 +186,17 @@ class MovieService:
             return Res(False, "Id Không tồn tại hoặc không có bất kỳ thay đổi nào")
 
         return Res(True)
+
+    def getAllMovieInDate(self, date, format) -> Res:
+        timeStampStart = time.convertTimeToTimestamp(date, format)
+        if timeStampStart is None:
+            return Res(False, "Lỗi chuyển đổi thời gian")
+        timeStampEnd = timeStampStart + 86400 - 1
+        result = self.movieRepository.getAllMovieFromTo(timeStampStart, timeStampEnd)
+
+        if result is None:
+            return Res(False, "Lỗi truy vấn")
+
+        return Res(True, data=result)
+
+    

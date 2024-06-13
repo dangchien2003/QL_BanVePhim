@@ -8,6 +8,7 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 from src.model.staff_current import StaffCurrent
+from src.view.staff.form_info import Ui_FormInfo
 
 
 class Ui_StafWorking(object):
@@ -37,6 +38,22 @@ class Ui_StafWorking(object):
 
         self.retranslateUi(StafWorking)
         QtCore.QMetaObject.connectSlotsByName(StafWorking)
+
+        self.showFormInfo()
+
+    def showFormInfo(self):
+        self.clearLayoutFormInfo()
+        child_widget = QtWidgets.QWidget()
+        child_ui = Ui_FormInfo(self.staffCurrent)
+        child_ui.setupUi(child_widget)
+        self.form.addWidget(child_widget)
+
+    def clearLayoutFormInfo(self):
+        while self.form.count():
+            item = self.form.takeAt(0)
+            widget = item.widget()
+            if widget is not None:
+                widget.deleteLater()
 
     def retranslateUi(self, StafWorking):
         _translate = QtCore.QCoreApplication.translate

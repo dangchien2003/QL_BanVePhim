@@ -10,6 +10,8 @@ class Excute:
     def getAll(self, query):
         mysql = MysqlConnect()
         connection = mysql.create_connection()
+        if connection is None:
+            return None
         cursor = connection.cursor()
         result = None
 

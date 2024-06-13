@@ -48,3 +48,21 @@ class MovieRepository:
     def updateOneMovie(self, movie: Movie):
         query = f"update movie set name = '{movie.name}', age = {movie.age}, minPrice = {movie.minPrice}, time = {movie.time} where id = '{movie.id}'"
         return self.excute.edit(query)
+
+    def getAllMovieFromTo(self, start: float, end: float):
+        query = f"""SELECT 
+                        movie.id ,  
+                        movie.name
+                    FROM 
+                        movie 
+                    JOIN 
+                        calendar 
+                    ON 
+                        movie.id = calendar.idMovie 
+                    WHERE 
+                        calendar.cancleAt IS NULL  
+                    AND
+                        movie.hideAt IS NULL
+                    AND 
+                        calendar.time BETWEEN {start} AND {end}"""
+        return self.excute.getAll(query)
