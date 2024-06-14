@@ -34,7 +34,7 @@ class Ui_Buy_Ticket(object):
         self.layoutLogin.setContentsMargins(0, 0, 0, 0)
         self.layoutLogin.setObjectName("layoutLogin")
         self.verticalLayoutWidget_2 = QtWidgets.QWidget(parent=self.centralwidget)
-        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(220, 0, 881, 701))
+        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(210, 0, 891, 701))
         self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
         self.layoutWorking = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
         self.layoutWorking.setContentsMargins(0, 0, 0, 0)

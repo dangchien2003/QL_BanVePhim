@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>361</width>
+    <width>381</width>
     <height>701</height>
    </rect>
   </property>
@@ -17,104 +17,333 @@
    <string notr="true">QSpinBox,QComboBox,QLineEdit,QPushButton,QLabel{font-size: 15px} QSpinBox,QComboBox,QLineEdit, QPushButton{border-radius: 10px; padding: 5px 8px}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label_3">
+   <widget class="QGroupBox" name="box">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>290</y>
-      <width>111</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Tên khách hàng</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="nameCustomer">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>290</y>
-      <width>191</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>340</y>
-      <width>51</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Email</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="email">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>340</y>
-      <width>211</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>250</y>
-      <width>131</width>
-      <height>31</height>
+      <x>0</x>
+      <y>0</y>
+      <width>381</width>
+      <height>701</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font-size: 22px</string>
-    </property>
-    <property name="text">
-     <string>Khách hàng</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_6">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>390</y>
-      <width>91</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font-size: 22px</string>
-    </property>
-    <property name="text">
-     <string>Chỗ ngồi</string>
-    </property>
-   </widget>
-   <widget class="QGroupBox" name="groupBox">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>341</width>
-      <height>221</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font-size: 14px</string>
+     <string notr="true">background: rgba(235, 235, 235, 0.8); border: none</string>
     </property>
     <property name="title">
      <string/>
     </property>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="label_9">
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>0</y>
+       <x>30</x>
+       <y>510</y>
+       <width>71</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Bỏng ngô</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>390</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size: 22px</string>
+     </property>
+     <property name="text">
+      <string>Chỗ ngồi</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="email">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>340</y>
+       <width>211</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background: white</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="total_popcorn">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>500</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0 đ</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="clean">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>630</y>
+       <width>111</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: yellow; font-size: 16px</string>
+     </property>
+     <property name="text">
+      <string>Dọn dẹp</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="total_ticket">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>430</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0 đ</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="total_water">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>550</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0 đ</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="payment">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>630</y>
+       <width>201</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #3dd5f3; font-size: 16px</string>
+     </property>
+     <property name="text">
+      <string>Thanh toán</string>
+     </property>
+    </widget>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>341</width>
+       <height>231</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QGroupBox{border: 1px solid #adb5bd}</string>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>10</y>
+        <width>131</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-size: 22px</string>
+      </property>
+      <property name="text">
+       <string>Tra cứu phim</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="image">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>50</y>
+        <width>101</width>
+        <height>141</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 1px solid #adb5bd; padding: 1px</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="nameMovie">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>100</y>
+        <width>211</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-size: 15px; background: #ffffff</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Chọn bộ phim</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLineEdit" name="selectDay">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>50</y>
+        <width>211</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: white</string>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="calender">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>150</y>
+        <width>211</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-size: 15px; background: #ffffff</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Chọn khung giờ</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QPushButton" name="btnSelectChair">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>190</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-size: 15px; background: #fd9843</string>
+      </property>
+      <property name="text">
+       <string>Chọn ghế</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="timeRemaing">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>200</y>
+        <width>191</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 75, 84)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QSpinBox" name="spinBox">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>500</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background: white</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>290</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Tên khách hàng</string>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="listChair">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>430</y>
+       <width>211</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size: 15px;     background: transparent; border: none</string>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:15px; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="nameCustomer">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>290</y>
+       <width>191</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background: white</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>460</y>
        <width>131</width>
        <height>31</height>
       </rect>
@@ -123,256 +352,64 @@
       <string notr="true">font-size: 22px</string>
      </property>
      <property name="text">
-      <string>Tra cứu phim</string>
+      <string>Dịch vụ khác</string>
      </property>
     </widget>
-    <widget class="QLabel" name="image">
+    <widget class="QSpinBox" name="spinBox_2">
      <property name="geometry">
       <rect>
-       <x>230</x>
-       <y>40</y>
-       <width>101</width>
-       <height>141</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border: 1px solid #adb5bd; padding: 1px</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="nameMovie">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>90</y>
-       <width>211</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <item>
-      <property name="text">
-       <string>Chọn bộ phim</string>
-      </property>
-     </item>
-    </widget>
-    <widget class="QLineEdit" name="selectDay">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>40</y>
-       <width>211</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="calender">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>140</y>
-       <width>211</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <item>
-      <property name="text">
-       <string>Chọn khung giờ</string>
-      </property>
-     </item>
-    </widget>
-    <widget class="QPushButton" name="btnSelectChair">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>180</y>
-       <width>101</width>
+       <x>110</x>
+       <y>550</y>
+       <width>91</width>
        <height>31</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background: #fd9843</string>
-     </property>
-     <property name="text">
-      <string>Chọn ghế</string>
+      <string notr="true">background: white</string>
      </property>
     </widget>
-    <widget class="QLabel" name="timeRemaing">
+    <widget class="QLabel" name="label_4">
      <property name="geometry">
       <rect>
-       <x>130</x>
-       <y>190</y>
-       <width>191</width>
-       <height>20</height>
+       <x>20</x>
+       <y>340</y>
+       <width>51</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Email</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>250</y>
+       <width>131</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: rgb(255, 75, 84)</string>
+      <string notr="true">font-size: 22px</string>
      </property>
      <property name="text">
-      <string/>
+      <string>Khách hàng</string>
      </property>
     </widget>
-   </widget>
-   <widget class="QLabel" name="label_8">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>460</y>
-      <width>131</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font-size: 22px</string>
-    </property>
-    <property name="text">
-     <string>Dịch vụ khác</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_9">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>510</y>
-      <width>71</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Bỏng ngô</string>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="spinBox">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>500</y>
-      <width>91</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_10">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>560</y>
-      <width>71</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Nước ngọt</string>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="spinBox_2">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>550</y>
-      <width>91</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="total_popcorn">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>500</y>
-      <width>101</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>0 đ</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="total_water">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>550</y>
-      <width>101</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>0 đ</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="total_ticket">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>430</y>
-      <width>101</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>0 đ</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="payment">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>630</y>
-      <width>201</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: #3dd5f3; font-size: 16px</string>
-    </property>
-    <property name="text">
-     <string>Thanh toán</string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="listChair">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>430</y>
-      <width>211</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font-size: 15px;     background: transparent; border: none</string>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-    <property name="html">
-     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:15px; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="clean">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>630</y>
-      <width>111</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: yellow; font-size: 16px</string>
-    </property>
-    <property name="text">
-     <string>Dọn dẹp</string>
-    </property>
+    <widget class="QLabel" name="label_10">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>560</y>
+       <width>71</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Nước ngọt</string>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>

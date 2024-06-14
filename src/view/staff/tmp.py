@@ -7,71 +7,46 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-from src.model.staff_current import StaffCurrent
-from src.view.staff.form_info import Ui_FormInfo
-from src.view.staff.frame_choose_chair import Ui_ChooseChair
 
 
 class Ui_StafWorking(object):
-    def __init__(self, staffCurrent: StaffCurrent):
-        self.staffCurrent = staffCurrent
-        self.frameWorkingShowed = False
-
     def setupUi(self, StafWorking):
         StafWorking.setObjectName("StafWorking")
         StafWorking.resize(891, 701)
-        self.verticalLayoutWidget = QtWidgets.QWidget(parent=StafWorking)
+        self.centralwidget = QtWidgets.QWidget(parent=StafWorking)
+        self.centralwidget.setObjectName("centralwidget")
+        self.verticalLayoutWidget = QtWidgets.QWidget(parent=self.centralwidget)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(0, 0, 381, 701))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.form = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
         self.form.setContentsMargins(0, 0, 0, 0)
         self.form.setObjectName("form")
-        self.verticalLayoutWidget_2 = QtWidgets.QWidget(parent=StafWorking)
+        self.verticalLayoutWidget_2 = QtWidgets.QWidget(parent=self.centralwidget)
         self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(390, 0, 501, 701))
         self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
         self.chair_location = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
         self.chair_location.setContentsMargins(0, 0, 0, 0)
         self.chair_location.setObjectName("chair_location")
-        self.line = QtWidgets.QFrame(parent=StafWorking)
+        self.line = QtWidgets.QFrame(parent=self.centralwidget)
         self.line.setGeometry(QtCore.QRect(370, 30, 20, 651))
         self.line.setFrameShape(QtWidgets.QFrame.Shape.VLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
         self.line.setObjectName("line")
+        StafWorking.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(StafWorking)
         QtCore.QMetaObject.connectSlotsByName(StafWorking)
 
-        self.showFormInfo()
-
-    def showFormInfo(self):
-        self.clearLayoutFormInfo()
-        child_widget = QtWidgets.QWidget()
-        child_ui = Ui_FormInfo(self, self.staffCurrent)
-        child_ui.setupUi(child_widget)
-        self.form.addWidget(child_widget)
-        self.formInfo = child_ui
-
-    def showFormChooseChair(self, selectedIdChairs: list):
-        self.clearLayoutChooseChair()
-        child_widget = Ui_ChooseChair(self.formInfo, selectedIdChairs)
-        self.chair_location.addWidget(child_widget)
-        self.frameWorkingShowed = True
-
-    def clearLayoutChooseChair(self):
-        while self.chair_location.count():
-            item = self.chair_location.takeAt(0)
-            widget = item.widget()
-            if widget is not None:
-                widget.deleteLater()
-        self.frameWorkingShowed = False
-
-    def clearLayoutFormInfo(self):
-        while self.form.count():
-            item = self.form.takeAt(0)
-            widget = item.widget()
-            if widget is not None:
-                widget.deleteLater()
-
     def retranslateUi(self, StafWorking):
         _translate = QtCore.QCoreApplication.translate
         StafWorking.setWindowTitle(_translate("StafWorking", "Staff Working"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    StafWorking = QtWidgets.QMainWindow()
+    ui = Ui_StafWorking()
+    ui.setupUi(StafWorking)
+    StafWorking.show()
+    sys.exit(app.exec())
