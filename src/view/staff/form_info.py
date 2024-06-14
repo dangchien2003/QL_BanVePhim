@@ -11,20 +11,24 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 from src.model.staff_current import StaffCurrent
 from src.controller.calendar_controller import CalendarController
 from src.controller.movie_controller import MovieController
-from src.view.staff.frame_calendar import Ui_SelectCalendar
+from src.controller.seat_controller import SeatController
 from src.util import toast, time
 from src.util.genarate import gen_time
+from src.view.staff.frame_calendar import Ui_SelectCalendar
 
 
 class Ui_FormInfo(object):
-    def __init__(self, staffCurrent: StaffCurrent):
+    def __init__(self, frameWorking, staffCurrent: StaffCurrent):
+        self.frameWorking = frameWorking
         self.calendarController = CalendarController()
         self.movieController = MovieController()
+        self.seatController = SeatController()
         self.staffCurrent = staffCurrent
         self.listIdMovie = []
         self.listMovie = []
         self.listIdCalendar = []
         self.listCalendar = []
+        self.selecting = []
 
     def setupUi(self, FormInfo):
         FormInfo.setObjectName("FormInfo")
@@ -87,9 +91,12 @@ class Ui_FormInfo(object):
         self.timeRemaing.setStyleSheet("color: rgb(255, 75, 84); font-size: 15px")
         self.timeRemaing.setText("")
         self.timeRemaing.setObjectName("timeRemaing")
-        self.listChair = QtWidgets.QLabel(parent=FormInfo)
-        self.listChair.setGeometry(QtCore.QRect(10, 430, 231, 21))
-        self.listChair.setText("")
+        self.listChair = QtWidgets.QTextEdit(parent=FormInfo)
+        self.listChair.setGeometry(QtCore.QRect(20, 430, 211, 31))
+        self.listChair.setStyleSheet(
+            "font-size: 15px;     background: transparent; border: none"
+        )
+        self.listChair.setReadOnly(True)
         self.listChair.setObjectName("listChair")
         self.label_8 = QtWidgets.QLabel(parent=FormInfo)
         self.label_8.setGeometry(QtCore.QRect(110, 460, 131, 31))
@@ -117,10 +124,13 @@ class Ui_FormInfo(object):
         self.total_ticket.setGeometry(QtCore.QRect(250, 430, 101, 31))
         self.total_ticket.setObjectName("total_ticket")
         self.payment = QtWidgets.QPushButton(parent=FormInfo)
-        self.payment.setGeometry(QtCore.QRect(50, 630, 261, 41))
+        self.payment.setGeometry(QtCore.QRect(20, 630, 201, 41))
         self.payment.setStyleSheet("background-color: #3dd5f3; font-size: 16px")
         self.payment.setObjectName("payment")
-
+        self.clean = QtWidgets.QPushButton(parent=FormInfo)
+        self.clean.setGeometry(QtCore.QRect(230, 630, 111, 41))
+        self.clean.setStyleSheet("background-color: yellow; font-size: 16px")
+        self.clean.setObjectName("clean")
         self.retranslateUi(FormInfo)
         QtCore.QMetaObject.connectSlotsByName(FormInfo)
 
@@ -142,6 +152,17 @@ class Ui_FormInfo(object):
         self.total_water.setText(_translate("FormInfo", "0 đ"))
         self.total_ticket.setText(_translate("FormInfo", "0 đ"))
         self.payment.setText(_translate("FormInfo", "Thanh toán"))
+        self.clean.setText(_translate("FormInfo", "Dọn dẹp"))
+        self.listChair.setHtml(
+            _translate(
+                "FormInfo",
+                '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">\n'
+                '<html><head><meta name="qrichtext" content="1" /><style type="text/css">\n'
+                "p, li { white-space: pre-wrap; }\n"
+                "</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:15px; font-weight:400; font-style:normal;\">\n"
+                '<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p></body></html>',
+            )
+        )
         self.setMovieToday()
         self.setEvents()
 
@@ -150,6 +171,7 @@ class Ui_FormInfo(object):
         self.selectDay.mousePressEvent = self.showFrameSelectCalendar
         self.nameMovie.currentIndexChanged.connect(self.changeMovie)
         self.calender.currentIndexChanged.connect(self.changeCalendar)
+        self.btnSelectChair.clicked.connect(self.clickBtnChooseChair)
 
     def setMovieToday(self):
         nowtms = gen_time.getNowTimestamp()
@@ -157,7 +179,12 @@ class Ui_FormInfo(object):
         self.selectDay.setText(date)
         self.changeDay()
 
+    set
+
     def changeDay(self):
+        self.frameWorking.clearLayoutChooseChair()
+        self.listChair.setPlainText("")
+
         time = self.selectDay.text()
         result = self.movieController.getAllMovieInDate(time, "%d-%m-%Y")
 
@@ -212,12 +239,19 @@ class Ui_FormInfo(object):
 
     def changeMovie(self, index):
         self.clearListCalendar()
+        self.frameWorking.clearLayoutChooseChair()
+        self.listChair.setPlainText("")
+
         if index <= 0:
             return
+
         indexSelected = self.nameMovie.currentIndex()
         self.handleAddCalendar(indexSelected)
 
     def changeCalendar(self, index):
+        self.frameWorking.clearLayoutChooseChair()
+        self.listChair.setPlainText("")
+        self.timeRemaing.setText("")
         if index <= 0:
             return
         indexSelected = self.calender.currentIndex()
@@ -236,12 +270,12 @@ class Ui_FormInfo(object):
         playTime = dataList[1]
         room = dataList[2]
         now = gen_time.getNowTimestamp()
-        remaning = int((now - playTime) / 60)
+        played = int((now - playTime) / 60)
 
-        if remaning > timeMovie:
+        if played > timeMovie:
             self.timeRemaing.setText(f"Đã hết phim")
-        elif 0 < remaning < timeMovie:
-            self.timeRemaing.setText(f"P{room} - {remaning}/{timeMovie} phút")
+        elif 0 < played < timeMovie:
+            self.timeRemaing.setText(f"P{room} - {played}/{timeMovie} phút")
         else:
             if room is None:
                 return
@@ -261,3 +295,27 @@ class Ui_FormInfo(object):
     def getCalendar(self, idMovie):
         date = self.selectDay.text()
         return self.calendarController.getCalendar(idMovie, date)
+
+    def clickBtnChooseChair(self):
+        if (
+            self.frameWorking.frameWorkingShowed is True
+            or self.calender.currentIndex() <= 0
+        ):
+            return
+
+        resultGetSelectedChairs = self.seatController.getAllChairSelected(
+            self.listIdCalendar[self.calender.currentIndex()]
+        )
+
+        if resultGetSelectedChairs.success is False:
+            toast.toastWarning(resultGetSelectedChairs.message)
+            return
+
+        listChairsSelected = [x[0] for x in resultGetSelectedChairs.data]
+        self.frameWorking.showFormChooseChair(listChairsSelected)
+        return
+
+    def setSelectedIdChair(self, selecting: list):
+        self.selecting = selecting
+        self.listChair.setPlainText(", ".join(map(str, selecting)))
+        return

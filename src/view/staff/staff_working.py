@@ -9,11 +9,13 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 from src.model.staff_current import StaffCurrent
 from src.view.staff.form_info import Ui_FormInfo
+from src.view.staff.frame_choose_chair import Ui_ChooseChair
 
 
 class Ui_StafWorking(object):
     def __init__(self, staffCurrent: StaffCurrent):
         self.staffCurrent = staffCurrent
+        self.frameWorkingShowed = False
 
     def setupUi(self, StafWorking):
         StafWorking.setObjectName("StafWorking")
@@ -44,9 +46,24 @@ class Ui_StafWorking(object):
     def showFormInfo(self):
         self.clearLayoutFormInfo()
         child_widget = QtWidgets.QWidget()
-        child_ui = Ui_FormInfo(self.staffCurrent)
+        child_ui = Ui_FormInfo(self, self.staffCurrent)
         child_ui.setupUi(child_widget)
         self.form.addWidget(child_widget)
+        self.formInfo = child_ui
+
+    def showFormChooseChair(self, selectedIdChairs: list):
+        self.clearLayoutChooseChair()
+        child_widget = Ui_ChooseChair(self.formInfo, selectedIdChairs)
+        self.chair_location.addWidget(child_widget)
+        self.frameWorkingShowed = True
+
+    def clearLayoutChooseChair(self):
+        while self.chair_location.count():
+            item = self.chair_location.takeAt(0)
+            widget = item.widget()
+            if widget is not None:
+                widget.deleteLater()
+        self.frameWorkingShowed = False
 
     def clearLayoutFormInfo(self):
         while self.form.count():
