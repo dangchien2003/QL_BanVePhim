@@ -1,3 +1,5 @@
+import os
+from bean import load_env
 from src.util.response import Res
 from src.util import _string, number
 
@@ -17,3 +19,31 @@ class TotalService:
                     return Res(False, "Mã ghế không hợp lệ")
             total += priceFirstRow + priceFirstRow * (5 / 100) * (position - 1)
         return Res(True, data=number.convertPrice(total))
+
+    def cal_totalPopcorn(self, quantity: int):
+        priceOnePopcorn = None
+        try:
+            priceOnePopcorn = int(os.getenv("PRICE_POPCORN"))
+        except:
+            print("Lỗi lấy giá trị bắp rang bơ")
+
+        if priceOnePopcorn is None:
+            return Res(False, "Không thể lấy giá bắp rang")
+        total_number = quantity * priceOnePopcorn
+        total_money = number.convertPrice(total_number)
+        dataRes = {"total_money": total_money, "total_number": total_number}
+        return Res(True, data=dataRes)
+
+    def cal_totalWater(self, quantity: int):
+        priceOneWater = None
+        try:
+            priceOneWater = int(os.getenv("PRICE_WATER"))
+        except:
+            print("Lỗi lấy giá trị nước")
+
+        if priceOneWater is None:
+            return Res(False, "Không thể lấy giá nước")
+        total_number = quantity * priceOneWater
+        total_money = number.convertPrice(total_number)
+        dataRes = {"total_money": total_money, "total_number": total_number}
+        return Res(True, data=dataRes)

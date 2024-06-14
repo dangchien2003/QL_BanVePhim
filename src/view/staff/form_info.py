@@ -32,6 +32,8 @@ class Ui_FormInfo(object):
         self.listCalendar = []
         self.selecting = []
         self.priceMovie = None
+        self.totalWater = 0
+        self.totalPopcorn = 0
 
     def setupUi(self, FormInfo):
         FormInfo.setObjectName("FormInfo")
@@ -209,6 +211,8 @@ class Ui_FormInfo(object):
         self.num_water.setValue(0)
         self.total_water.setText("0 đ")
         self.calender.setCurrentIndex(0)
+        self.totalWater = 0
+        self.totalPopcorn = 0
 
     def listChairChanged(self):
         if self.frameWorking.frameWorkingShowed is False:
@@ -245,12 +249,36 @@ class Ui_FormInfo(object):
         return resultTotalTicket.data
 
     def numPopcornChanged(self):
-        print("numPopcornChanged")
-        return
+        quantity = self.num_popcorn.value()
+        if quantity == 0:
+            self.total_popcorn.setText("0 đ")
+            self.totalPopcorn = 0
+            return
+        resultGetPricePopcorn = self.totalController.cal_totalPopcorn(
+            self.num_popcorn.value()
+        )
+        if resultGetPricePopcorn.success is False:
+            return toast.toastWarning(resultGetPricePopcorn.message)
+
+        dataRes = resultGetPricePopcorn.data
+        self.totalPopcorn = dataRes["total_number"]
+        self.total_popcorn.setText(f"{dataRes['total_money']} đ")
 
     def numWaterChanged(self):
-        print("numWaterChanged")
-        return
+        quantity = self.num_water.value()
+        if quantity == 0:
+            self.total_water.setText("0 đ")
+            self.totalWater = 0
+            return
+        resultGetPriceWater = self.totalController.cal_totalWater(
+            self.num_water.value()
+        )
+        if resultGetPriceWater.success is False:
+            return toast.toastWarning(resultGetPriceWater.message)
+
+        dataRes = resultGetPriceWater.data
+        self.totalWater = dataRes["total_number"]
+        self.total_water.setText(f"{dataRes['total_money']} đ")
 
     def changeDay(self):
         self.frameWorking.clearLayoutChooseChair()

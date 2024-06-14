@@ -8,3 +8,9 @@ class TotalController:
 
     def cal_totalTicket(self, selecting: list, priceFirstRow: int) -> Res:
         return self.totalService.cal_totalTicket(selecting, priceFirstRow)
+
+    def cal_totalPopcorn(self, quantity: int):
+        return self.totalService.cal_totalPopcorn(quantity)
+
+    def cal_totalWater(self, quantity: int):
+        return self.totalService.cal_totalWater(quantity)
