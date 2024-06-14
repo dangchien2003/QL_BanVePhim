@@ -66,3 +66,12 @@ class MovieRepository:
                     AND 
                         calendar.time BETWEEN {start} AND {end}"""
         return self.excute.getAll(query)
+
+    def getPriceById(self, id):
+        query = f"""SELECT 
+                        minPrice 
+                    FROM 
+                        movie 
+                    WHERE 
+                        id = '{id}'"""
+        return self.excute.getOne(query)

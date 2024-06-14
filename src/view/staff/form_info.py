@@ -12,6 +12,7 @@ from src.model.staff_current import StaffCurrent
 from src.controller.calendar_controller import CalendarController
 from src.controller.movie_controller import MovieController
 from src.controller.seat_controller import SeatController
+from src.controller.total_controller import TotalController
 from src.util import toast, time
 from src.util.genarate import gen_time
 from src.view.staff.frame_calendar import Ui_SelectCalendar
@@ -23,12 +24,14 @@ class Ui_FormInfo(object):
         self.calendarController = CalendarController()
         self.movieController = MovieController()
         self.seatController = SeatController()
+        self.totalController = TotalController()
         self.staffCurrent = staffCurrent
         self.listIdMovie = []
         self.listMovie = []
         self.listIdCalendar = []
         self.listCalendar = []
         self.selecting = []
+        self.priceMovie = None
 
     def setupUi(self, FormInfo):
         FormInfo.setObjectName("FormInfo")
@@ -108,10 +111,10 @@ class Ui_FormInfo(object):
         self.timeRemaing.setStyleSheet("color: rgb(255, 75, 84)")
         self.timeRemaing.setText("")
         self.timeRemaing.setObjectName("timeRemaing")
-        self.spinBox = QtWidgets.QSpinBox(parent=self.box)
-        self.spinBox.setGeometry(QtCore.QRect(110, 500, 91, 31))
-        self.spinBox.setStyleSheet("background: white")
-        self.spinBox.setObjectName("spinBox")
+        self.num_popcorn = QtWidgets.QSpinBox(parent=self.box)
+        self.num_popcorn.setGeometry(QtCore.QRect(110, 500, 91, 31))
+        self.num_popcorn.setStyleSheet("background: white")
+        self.num_popcorn.setObjectName("spinBox")
         self.label_3 = QtWidgets.QLabel(parent=self.box)
         self.label_3.setGeometry(QtCore.QRect(20, 290, 111, 31))
         self.label_3.setObjectName("label_3")
@@ -130,10 +133,10 @@ class Ui_FormInfo(object):
         self.label_8.setGeometry(QtCore.QRect(120, 460, 131, 31))
         self.label_8.setStyleSheet("font-size: 22px")
         self.label_8.setObjectName("label_8")
-        self.spinBox_2 = QtWidgets.QSpinBox(parent=self.box)
-        self.spinBox_2.setGeometry(QtCore.QRect(110, 550, 91, 31))
-        self.spinBox_2.setStyleSheet("background: white")
-        self.spinBox_2.setObjectName("spinBox_2")
+        self.num_water = QtWidgets.QSpinBox(parent=self.box)
+        self.num_water.setGeometry(QtCore.QRect(110, 550, 91, 31))
+        self.num_water.setStyleSheet("background: white")
+        self.num_water.setObjectName("spinBox_2")
         self.label_4 = QtWidgets.QLabel(parent=self.box)
         self.label_4.setGeometry(QtCore.QRect(20, 340, 51, 31))
         self.label_4.setObjectName("label_4")
@@ -165,7 +168,7 @@ class Ui_FormInfo(object):
         self.total_water.setText(_translate("FormInfo", "0 đ"))
         self.total_ticket.setText(_translate("FormInfo", "0 đ"))
         self.payment.setText(_translate("FormInfo", "Thanh toán"))
-        self.clean.setText(_translate("FormInfo", "Dọn dẹp"))
+        self.clean.setText(_translate("FormInfo", "Làm mới"))
         self.listChair.setHtml(
             _translate(
                 "FormInfo",
@@ -185,6 +188,10 @@ class Ui_FormInfo(object):
         self.nameMovie.currentIndexChanged.connect(self.changeMovie)
         self.calender.currentIndexChanged.connect(self.changeCalendar)
         self.btnSelectChair.clicked.connect(self.clickBtnChooseChair)
+        self.clean.clicked.connect(self.clickClean)
+        self.listChair.textChanged.connect(self.listChairChanged)
+        self.num_popcorn.editingFinished.connect(self.numPopcornChanged)
+        self.num_water.editingFinished.connect(self.numWaterChanged)
 
     def setMovieToday(self):
         nowtms = gen_time.getNowTimestamp()
@@ -192,7 +199,58 @@ class Ui_FormInfo(object):
         self.selectDay.setText(date)
         self.changeDay()
 
-    set
+    def clickClean(self):
+        self.nameCustomer.setText("")
+        self.email.setText("")
+        self.listChair.setPlainText("")
+        self.total_ticket.setText("0 đ")
+        self.num_popcorn.setValue(0)
+        self.total_popcorn.setText("0 đ")
+        self.num_water.setValue(0)
+        self.total_water.setText("0 đ")
+        self.calender.setCurrentIndex(0)
+
+    def listChairChanged(self):
+        if self.frameWorking.frameWorkingShowed is False:
+            return
+        if self.priceMovie is None:
+            price = self.getPriceMovie()
+            if price is None:
+                return
+            self.priceMovie = price
+        if len(self.selecting) == 0:
+            self.total_ticket.setText("0 đ")
+            return
+        totalTicket = self.getTotalTicket()
+        self.total_ticket.setText(f"{totalTicket} đ")
+
+    def getPriceMovie(self):
+        resultGetPriceMovie = self.movieController.getPriceMovie(
+            self.listIdMovie[self.nameMovie.currentIndex()]
+        )
+
+        if resultGetPriceMovie.success is False:
+            toast.toastWarning(resultGetPriceMovie.message)
+            return None
+
+        return resultGetPriceMovie.data
+
+    def getTotalTicket(self):
+        resultTotalTicket = self.totalController.cal_totalTicket(
+            self.selecting, self.priceMovie
+        )
+        if resultTotalTicket.success is False:
+            toast.toastWarning(resultTotalTicket.message)
+            return
+        return resultTotalTicket.data
+
+    def numPopcornChanged(self):
+        print("numPopcornChanged")
+        return
+
+    def numWaterChanged(self):
+        print("numWaterChanged")
+        return
 
     def changeDay(self):
         self.frameWorking.clearLayoutChooseChair()
@@ -254,6 +312,7 @@ class Ui_FormInfo(object):
         self.clearListCalendar()
         self.frameWorking.clearLayoutChooseChair()
         self.listChair.setPlainText("")
+        self.priceMovie = None
 
         if index <= 0:
             return

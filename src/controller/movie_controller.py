@@ -46,3 +46,6 @@ class MovieController:
 
     def getAllMovieInDate(self, date, format) -> Res:
         return self.movieService.getAllMovieInDate(date, format)
+
+    def getPriceMovie(self, idMovie) -> Res:
+        return self.movieService.getPrice(idMovie)

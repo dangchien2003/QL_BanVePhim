@@ -100,7 +100,7 @@
       <string notr="true">background-color: yellow; font-size: 16px</string>
      </property>
      <property name="text">
-      <string>Dọn dẹp</string>
+      <string>Làm mới</string>
      </property>
     </widget>
     <widget class="QLabel" name="total_ticket">
@@ -277,7 +277,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QSpinBox" name="spinBox">
+    <widget class="QSpinBox" name="num_popcorn">
      <property name="geometry">
       <rect>
        <x>110</x>
@@ -355,7 +355,7 @@ p, li { white-space: pre-wrap; }
       <string>Dịch vụ khác</string>
      </property>
     </widget>
-    <widget class="QSpinBox" name="spinBox_2">
+    <widget class="QSpinBox" name="num_water">
      <property name="geometry">
       <rect>
        <x>110</x>

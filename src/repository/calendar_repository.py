@@ -20,7 +20,6 @@ class CalendarRepository:
                         calendar.cancleAt IS NULL
                     AND
                         calendar.time + movie.time*60 - 1800  BETWEEN {timeStart} AND calendar.time + movie.time*60 - 1800"""
-        print(query)
         return self.excute.getAll(query)
 
     def getRemaingMovieByIdCalendar(self, idCalendar):

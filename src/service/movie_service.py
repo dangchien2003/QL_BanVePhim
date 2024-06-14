@@ -199,4 +199,11 @@ class MovieService:
 
         return Res(True, data=result)
 
-    
+    def getPrice(self, idMovie) -> Res:
+        if idMovie is None or idMovie.strip() == "":
+            return Res(False, "Id không hợp lệ")
+
+        result = self.movieRepository.getPriceById(idMovie)
+        if result is None:
+            return Res(False, "Phim không tồn tại")
+        return Res(True, data=list(result)[0])
