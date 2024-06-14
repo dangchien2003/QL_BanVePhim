@@ -5,7 +5,7 @@ class CalendarRepository:
     def __init__(self):
         self.excute = Excute()
 
-    def getCalendarOfMovie(self, idMovie, timeStart, timeEnd):
+    def getCalendarOfMovie(self, idMovie, timeStart):
         query = f"""SELECT 
                         calendar.id, 
                         calendar.time 
@@ -19,7 +19,8 @@ class CalendarRepository:
                     AND
                         calendar.cancleAt IS NULL
                     AND
-                        calendar.time + movie.time*60 - 1800  BETWEEN {timeStart} AND {timeEnd}"""
+                        calendar.time + movie.time*60 - 1800  BETWEEN {timeStart} AND calendar.time + movie.time*60 - 1800"""
+        print(query)
         return self.excute.getAll(query)
 
     def getRemaingMovieByIdCalendar(self, idCalendar):

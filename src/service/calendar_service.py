@@ -18,14 +18,13 @@ class CalendarService:
         now = gen_time.getNowTimestamp()
 
         timeStart = None
-        timeEnd = timestampInput + 86400 - 1
 
         if timestampInput < now:
             timeStart = now
         else:
             timeStart = timestampInput
 
-        result = self.calendarRepository.getCalendarOfMovie(idMovie, timeStart, timeEnd)
+        result = self.calendarRepository.getCalendarOfMovie(idMovie, timeStart)
 
         if result is None:
             return Res(False, "Lỗi truy vấn")
