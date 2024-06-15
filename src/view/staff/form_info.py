@@ -13,9 +13,13 @@ from src.controller.calendar_controller import CalendarController
 from src.controller.movie_controller import MovieController
 from src.controller.seat_controller import SeatController
 from src.controller.total_controller import TotalController
+from src.controller.ticket_controller import TicketController
+from src.controller.order_controller import OrderController
 from src.util import toast, time
 from src.util.genarate import gen_time
+from src.model.ticket import Ticket
 from src.view.staff.frame_calendar import Ui_SelectCalendar
+from src.view.staff.frame_payment import Ui_Payment
 
 
 class Ui_FormInfo(object):
@@ -25,6 +29,8 @@ class Ui_FormInfo(object):
         self.movieController = MovieController()
         self.seatController = SeatController()
         self.totalController = TotalController()
+        self.ticketController = TicketController()
+        self.orderController = OrderController()
         self.staffCurrent = staffCurrent
         self.listIdMovie = []
         self.listMovie = []
@@ -32,8 +38,10 @@ class Ui_FormInfo(object):
         self.listCalendar = []
         self.selecting = []
         self.priceMovie = None
+        self.totalTicket = 0
         self.totalWater = 0
         self.totalPopcorn = 0
+        self.ticketAuthened = None
 
     def setupUi(self, FormInfo):
         FormInfo.setObjectName("FormInfo")
@@ -194,6 +202,7 @@ class Ui_FormInfo(object):
         self.listChair.textChanged.connect(self.listChairChanged)
         self.num_popcorn.editingFinished.connect(self.numPopcornChanged)
         self.num_water.editingFinished.connect(self.numWaterChanged)
+        self.payment.clicked.connect(self.payClick)
 
     def setMovieToday(self):
         nowtms = gen_time.getNowTimestamp()
@@ -202,6 +211,9 @@ class Ui_FormInfo(object):
         self.changeDay()
 
     def clickClean(self):
+        self.cleanData()
+
+    def cleanData(self):
         self.nameCustomer.setText("")
         self.email.setText("")
         self.listChair.setPlainText("")
@@ -213,6 +225,16 @@ class Ui_FormInfo(object):
         self.calender.setCurrentIndex(0)
         self.totalWater = 0
         self.totalPopcorn = 0
+        self.totalTicket = 0
+        self.ticketAuthened = None
+
+    def payClick(self):
+        if self.authenTicket() is False:
+            return
+        self.payment_window = QtWidgets.QMainWindow()
+        self.payment_ui = Ui_Payment(self)
+        self.payment_ui.setupUi(self.payment_window)
+        self.payment_window.show()
 
     def listChairChanged(self):
         if self.frameWorking.frameWorkingShowed is False:
@@ -226,7 +248,8 @@ class Ui_FormInfo(object):
             self.total_ticket.setText("0 đ")
             return
         totalTicket = self.getTotalTicket()
-        self.total_ticket.setText(f"{totalTicket} đ")
+        self.totalTicket = totalTicket["total_number"]
+        self.total_ticket.setText(f"{totalTicket['total_money']} đ")
 
     def getPriceMovie(self):
         resultGetPriceMovie = self.movieController.getPriceMovie(
@@ -306,7 +329,9 @@ class Ui_FormInfo(object):
         for item in data:
             itemList = list(item)
             self.listIdCalendar.append(itemList[0])
-            self.listCalendar.append(time.convertTimeStampToString(itemList[1]))
+            self.listCalendar.append(
+                time.convertTimeStampToString(itemList[1], "%H:%M %d-%m-%Y")
+            )
 
     def changeValueSelectDay(self, value):
         self.calendar_window.close()
@@ -419,3 +444,39 @@ class Ui_FormInfo(object):
         self.selecting = selecting
         self.listChair.setPlainText(", ".join(map(str, selecting)))
         return
+
+    def getInfoTicket(self):
+        ticket = Ticket(
+            self.nameCustomer.text(),
+            self.email.text(),
+            str(self.listIdCalendar[self.calender.currentIndex()]),
+            len(self.selecting),
+            self.num_popcorn.value(),
+            self.num_water.value(),
+            self.totalTicket,
+            self.totalPopcorn,
+            self.totalWater,
+        )
+        return ticket
+
+    def authenTicket(self):
+        ticket = self.getInfoTicket()
+        result = self.ticketController.checkInfoTicket(ticket)
+        if result.success is False:
+            toast.toastWarning(result.message)
+            return False
+        self.ticketAuthened = result.data
+        return True
+
+    def order(self):
+        order = self.orderController.orderTicket(
+            self.ticketAuthened, self.selecting, self.staffCurrent.id
+        )
+
+        if order.success is False:
+            toast.toastWarning(order.message)
+            return
+        self.payment_window.destroy()
+        self.payment_ui = None
+        toast.toastInfo("Đặt vé thành công")
+        self.cleanData()

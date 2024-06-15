@@ -18,7 +18,8 @@ class TotalService:
                 if position is None:
                     return Res(False, "Mã ghế không hợp lệ")
             total += priceFirstRow + priceFirstRow * (5 / 100) * (position - 1)
-        return Res(True, data=number.convertPrice(total))
+            dataRes = {"total_number": total, "total_money": number.convertPrice(total)}
+        return Res(True, data=dataRes)
 
     def cal_totalPopcorn(self, quantity: int):
         priceOnePopcorn = None

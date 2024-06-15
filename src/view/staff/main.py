@@ -55,7 +55,6 @@ class Ui_Buy_Ticket(object):
         self.showFrameAccountStaff()
         self.showRequireLogin()
         self.staffCurrent = StaffCurrent(123, "cacs", "staff")
-        self.showFrameWorking()
 
     def showRequireLogin(self):
         btnRequireLogin = QtWidgets.QPushButton()
