@@ -2,7 +2,9 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 import sys
 import os
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+sys.path.append(
+    os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+)
 from src.model.login import Login
 from src.controller.login_controller import LoginController
 from src.view.admin.main_admin import MainAdmin
@@ -12,6 +14,16 @@ class Ui_Login(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
         self.setObjectName("self")
+        self.setWindowIcon(
+            QtGui.QIcon(
+                os.path.join(
+                    os.path.abspath(
+                        os.path.join(os.path.dirname(__file__), "..", "..", "..")
+                    ),
+                    "public/logo.png",
+                )
+            )
+        )
         self.resize(405, 309)
         self.setAutoFillBackground(False)
         self.setStyleSheet(

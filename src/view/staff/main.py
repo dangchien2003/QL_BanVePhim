@@ -24,6 +24,16 @@ class Ui_Buy_Ticket(object):
 
     def setupUi(self, Buy_Ticket):
         Buy_Ticket.setObjectName("Buy_Ticket")
+        Buy_Ticket.setWindowIcon(
+            QtGui.QIcon(
+                os.path.join(
+                    os.path.abspath(
+                        os.path.join(os.path.dirname(__file__), "..", "..", "..")
+                    ),
+                    "public/logo.png",
+                )
+            )
+        )
         Buy_Ticket.resize(1108, 701)
         self.centralwidget = QtWidgets.QWidget(parent=Buy_Ticket)
         self.centralwidget.setObjectName("centralwidget")

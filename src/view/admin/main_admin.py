@@ -15,6 +15,16 @@ class MainAdmin(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
         self.setObjectName("self")
+        self.setWindowIcon(
+            QtGui.QIcon(
+                os.path.join(
+                    os.path.abspath(
+                        os.path.join(os.path.dirname(__file__), "..", "..", "..")
+                    ),
+                    "public/logo.png",
+                )
+            )
+        )
         self.resize(1001, 700)
         self.setStyleSheet("")
         self.centralwidget = QtWidgets.QWidget(parent=self)

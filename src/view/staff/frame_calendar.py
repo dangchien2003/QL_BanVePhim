@@ -1,5 +1,5 @@
-import threading
-from PyQt6 import QtCore, QtWidgets
+import os
+from PyQt6 import QtCore, QtWidgets, QtGui
 
 
 class Ui_SelectCalendar(object):
@@ -10,6 +10,16 @@ class Ui_SelectCalendar(object):
 
     def setupUi(self, SelectCalendar):
         SelectCalendar.setObjectName("SelectCalendar")
+        SelectCalendar.setWindowIcon(
+            QtGui.QIcon(
+                os.path.join(
+                    os.path.abspath(
+                        os.path.join(os.path.dirname(__file__), "..", "..", "..")
+                    ),
+                    "public/logo.png",
+                )
+            )
+        )
         SelectCalendar.resize(404, 254)
         self.calendar = QtWidgets.QCalendarWidget(parent=SelectCalendar)
         self.calendar.setGeometry(QtCore.QRect(0, 0, 401, 251))
