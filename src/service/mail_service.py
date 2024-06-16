@@ -51,7 +51,6 @@ class MailService:
             with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
                 server.login(self.email, self.password)  # Đăng nhập vào tài khoản email
                 server.send_message(msg)  # Gửi email
-            print("Email đã được gửi thành công!")
         except smtplib.SMTPAuthenticationError:
             print("Lỗi xác thực. Kiểm tra lại email và mật khẩu.")
         except smtplib.SMTPServerDisconnected:
