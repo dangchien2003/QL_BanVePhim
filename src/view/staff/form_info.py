@@ -41,7 +41,7 @@ class Ui_FormInfo(object):
         self.totalTicket = 0
         self.totalWater = 0
         self.totalPopcorn = 0
-        self.ticketAuthened = None
+        self.ticketAuthened: Ticket = None
 
     def setupUi(self, FormInfo):
         FormInfo.setObjectName("FormInfo")
@@ -478,5 +478,16 @@ class Ui_FormInfo(object):
             return
         self.payment_window.destroy()
         self.payment_ui = None
-        toast.toastInfo("Đặt vé thành công")
+        resultSendMail = self.ticketController.sendMailTicket(
+            self.ticketAuthened.id,
+            self.nameMovie.currentText(),
+            self.calender.currentText(),
+            self.selecting,
+            self.nameCustomer.text(),
+            self.email.text(),
+        )
         self.cleanData()
+        if resultSendMail.success is False:
+            toast.toastWarning(resultSendMail.message)
+        else:
+            toast.toastInfo("Đặt vé thành công")

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket</title>
+</head>
+
+<body>
+    <h1 style="text-align: center;">Vé phim</h1>
+    <p>Bạn đã mua thành công vé xem phim: {{movie}}</p>
+    <p>Thời gian chiếu: {{calendar}}</p>
+    <p>Mã ghế: {{chairs}}</p>
+    <p>Hãy đưa mã này cho nhân viên khi đến xem: {{ticket}}</p>
+    <p style="text-align: center; display: inline-block;">Thân gửi khách hàng<br><span
+            style="font-weight: bold; line-height: 40px; font-size: 18px">{{customer}}</span></p>
+    <div style="text-align: center;">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?data={{ticket}}&size=250x250" alt="QR Code">
+    </div>
+</body>
+
+</html>

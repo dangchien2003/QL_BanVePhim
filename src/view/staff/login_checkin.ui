@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Login</class>
- <widget class="QWidget" name="Login">
+ <class>FrameLogin</class>
+ <widget class="QWidget" name="FrameLogin">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>405</width>
-    <height>309</height>
+    <height>276</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,7 +32,7 @@
     <rect>
      <x>140</x>
      <y>30</y>
-     <width>131</width>
+     <width>141</width>
      <height>31</height>
     </rect>
    </property>
@@ -48,7 +48,7 @@
 font-weight: bold</string>
    </property>
    <property name="text">
-    <string>Đăng nhập</string>
+    <string>Quầy soát vé</string>
    </property>
    <property name="center" stdset="0">
     <bool>true</bool>
@@ -57,7 +57,7 @@ font-weight: bold</string>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>80</x>
+     <x>70</x>
      <y>100</y>
      <width>41</width>
      <height>16</height>
@@ -75,9 +75,9 @@ font-weight: bold</string>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>40</x>
      <y>140</y>
-     <width>61</width>
+     <width>81</width>
      <height>31</height>
     </rect>
    </property>
@@ -87,10 +87,10 @@ font-weight: bold</string>
     </font>
    </property>
    <property name="text">
-    <string>Mật khẩu</string>
+    <string> Mật khẩu</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="email">
    <property name="geometry">
     <rect>
      <x>130</x>
@@ -100,7 +100,7 @@ font-weight: bold</string>
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_2">
+  <widget class="QLineEdit" name="password">
    <property name="geometry">
     <rect>
      <x>130</x>
@@ -113,11 +113,11 @@ font-weight: bold</string>
     <string notr="true"/>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="btn_login">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>220</y>
+     <x>130</x>
+     <y>210</y>
      <width>151</width>
      <height>28</height>
     </rect>
@@ -130,29 +130,7 @@ font-weight: bold</string>
 </string>
    </property>
    <property name="text">
-    <string>Đăng nhập với admin</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_2">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>220</y>
-     <width>161</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton:hover{
-	color: green
-}
-</string>
-   </property>
-   <property name="inputMethodHints">
-    <set>Qt::ImhNone</set>
-   </property>
-   <property name="text">
-    <string>Đăng nhập với nhân viên</string>
+    <string>Đăng nhập</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">

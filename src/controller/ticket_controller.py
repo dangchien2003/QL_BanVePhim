@@ -8,3 +8,14 @@ class TicketController:
 
     def checkInfoTicket(self, ticket: Ticket):
         return self.ticketService.checkInfoTicket(ticket)
+
+    def sendMailTicket(self, idticket, movie, calendar, chairs, customer, to_email):
+        return self.ticketService.sendMail(
+            idticket, movie, calendar, chairs, customer, to_email
+        )
+
+    def getInfoTicket(self, ticket):
+        return self.ticketService.getInfoTicket(ticket)
+
+    def checkinTicket(self, ticket, staff):
+        return self.ticketService.checkinTicket(ticket, staff)

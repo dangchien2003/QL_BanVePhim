@@ -6,6 +6,7 @@ from src.repository.loginRepository import LoginRepository
 from src.util.valid import emailValid, stringValid
 from src.util.response import Res
 from src.model.staff import Staff
+from src.model.staff_current import StaffCurrent
 from src.util.encryption.hash import Hash
 
 
@@ -72,4 +73,6 @@ class LoginService:
         if staff.rank != "staff":
             return Res(False, "Không có quyền truy cập")
 
-        return Res(True)
+        staffCurrent = StaffCurrent(staff.idnv, staff.name, staff.rank)
+
+        return Res(True, data=staffCurrent)

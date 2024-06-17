@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1108</width>
-    <height>701</height>
+    <height>727</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -60,6 +60,28 @@
      <enum>Qt::Vertical</enum>
     </property>
    </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1108</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="buy_ticket">
+    <property name="title">
+     <string>Quầy bán vé</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="checkin">
+    <property name="title">
+     <string>Soát vé</string>
+    </property>
+   </widget>
+   <addaction name="buy_ticket"/>
+   <addaction name="checkin"/>
   </widget>
  </widget>
  <resources/>
