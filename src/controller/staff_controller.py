@@ -32,8 +32,8 @@ class StaffController:
     def convertRank(self, rank: str):
         return self.addStaffService.convertRank(rank)
 
-    def add(self, staff):
-        return self.addStaffService.addStaff(staff)
+    def add(self, staff, passwordStr):
+        return self.addStaffService.addStaff(staff, passwordStr)
 
     def convertHashPasswords(self, password: str):
         return Hash().getHash(password)

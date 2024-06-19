@@ -63,23 +63,12 @@ class Ui_AddStaff(object):
         )
         self.add_btn.setObjectName("add_btn")
         self.render_password = QtWidgets.QPushButton(parent=AddStaff)
-        self.render_password.setGeometry(QtCore.QRect(710, 200, 111, 28))
+        self.render_password.setGeometry(QtCore.QRect(610, 200, 93, 28))
         self.render_password.setStyleSheet(
             "font-size: 14px;    background-color: #ffc107;     border-radius: 5px"
         )
         self.render_password.setObjectName("render_password")
-        self.check_password = QtWidgets.QPushButton(parent=AddStaff)
-        self.check_password.setGeometry(QtCore.QRect(610, 200, 93, 28))
-        self.check_password.setStyleSheet(
-            "font-size: 14px;    background-color: #198754;        border-radius: 5px"
-        )
-        self.check_password.setObjectName("check_password")
-        self.check_email = QtWidgets.QPushButton(parent=AddStaff)
-        self.check_email.setGeometry(QtCore.QRect(200, 330, 93, 28))
-        self.check_email.setStyleSheet(
-            "font-size: 14px;    background-color: #198754;        border-radius: 5px"
-        )
-        self.check_email.setObjectName("check_email")
+
         self.groupBox = QtWidgets.QGroupBox(parent=AddStaff)
         self.groupBox.setGeometry(QtCore.QRect(190, 200, 271, 80))
         self.groupBox.setStyleSheet("font-size: 16px; border: none")
@@ -112,15 +101,11 @@ class Ui_AddStaff(object):
         self.emailLabel.setText(_translate("AddStaff", "Email"))
         self.add_btn.setText(_translate("AddStaff", "Thêm"))
         self.render_password.setText(_translate("AddStaff", "Lấy mật khẩu"))
-        self.check_password.setText(_translate("AddStaff", "Kiểm tra"))
-        self.check_email.setText(_translate("AddStaff", "Kiểm tra"))
         self.nam.setText(_translate("AddStaff", "Nam"))
         self.nu.setText(_translate("AddStaff", "Nữ"))
         self.emailLabel_2.setText(_translate("AddStaff", "Giới tính"))
 
     def setEvents(self):
-        self.check_email.mousePressEvent = self.checkEmail
-        self.check_password.mousePressEvent = self.checkPassword
         self.render_password.mousePressEvent = self.randomPassword
         self.add_btn.mousePressEvent = self.addStaff
         self.nam.mousePressEvent = self.selectNam
@@ -162,11 +147,11 @@ class Ui_AddStaff(object):
 
             _password = self.password.text()
             email = self.email.text()
-            if (
-                self.staffController.checkEmail(email).success is False
-                or self.staffController.checkPassword(_password).success is False
-            ):
-                QtWidgets.QMessageBox.warning(None, "Thông báo", "Kiểm tra thông tin")
+            if self.staffController.checkEmail(email).success is False:
+                QtWidgets.QMessageBox.warning(None, "Thông báo", "Kiểm tra email")
+                return
+            if self.staffController.checkPassword(_password).success is False:
+                QtWidgets.QMessageBox.warning(None, "Thông báo", "Kiểm tra mật khẩu")
                 return
 
             _password = self.staffController.convertHashPasswords(_password)
@@ -194,7 +179,7 @@ class Ui_AddStaff(object):
         staff = self.getInfo()
         if staff is None:
             return
-        result = self.staffController.add(staff)
+        result = self.staffController.add(staff, self.password.text())
         if result.success is False:
             QtWidgets.QMessageBox.warning(None, "Lỗi", result.message)
             return
