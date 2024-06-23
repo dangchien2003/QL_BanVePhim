@@ -161,7 +161,7 @@ QMainWindow{background-color: #ececec}</string>
    <widget class="QPushButton" name="render_password">
     <property name="geometry">
      <rect>
-      <x>710</x>
+      <x>610</x>
       <y>200</y>
       <width>111</width>
       <height>28</height>
@@ -172,38 +172,6 @@ QMainWindow{background-color: #ececec}</string>
     </property>
     <property name="text">
      <string>Lấy mật khẩu</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="check_password">
-    <property name="geometry">
-     <rect>
-      <x>610</x>
-      <y>200</y>
-      <width>93</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font-size: 14px;	background-color: #198754;		border-radius: 5px</string>
-    </property>
-    <property name="text">
-     <string>Kiểm tra</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="check_email">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>330</y>
-      <width>93</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font-size: 14px;	background-color: #198754;		border-radius: 5px</string>
-    </property>
-    <property name="text">
-     <string>Kiểm tra</string>
     </property>
    </widget>
    <widget class="QGroupBox" name="groupBox">
