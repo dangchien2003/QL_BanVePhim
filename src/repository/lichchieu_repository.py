@@ -10,6 +10,12 @@ class LichChieuRepository:
     def __init__(self):
         self.excute = Excute()
 
-    def layDuLieuChoBang(self):
-        query = "select calendar.id,  movie.name, calendar.time, calendar.room from calendar join movie on movie.id = calendar.idMovie"
+    def searchTimKiem(self, start_timestamp, end_timestamp, room):
+        query = f"SELECT calendar.time as timeCalendar, calendar.room,  movie.name, movie.time as timeMovie FROM calendar join movie on calendar.idMovie = movie.id where calendar.time between {start_timestamp} and {end_timestamp} and calendar.room = {room} and calendar.cancleAt is null;"
+       
         return self.excute.getAll(query)
+    
+    def fetch_all_movie_names(self):
+        query = f"select movie.id, movie.name from movie where hideAt is null"
+        return self.excute.getAll(query)
+    

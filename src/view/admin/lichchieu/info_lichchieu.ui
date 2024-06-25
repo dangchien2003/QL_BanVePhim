@@ -225,6 +225,9 @@ p, li { white-space: pre-wrap; }
 font: 10pt &quot;MS Shell Dlg 2&quot;;
 border-radius: 15px;</string>
     </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
    </widget>
    <widget class="QDateEdit" name="date_ngaychieu">
     <property name="geometry">
@@ -234,6 +237,9 @@ border-radius: 15px;</string>
       <width>111</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QTimeEdit" name="time_begin">
@@ -254,6 +260,9 @@ border-radius: 15px;</string>
       <width>111</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QTableWidget" name="table_lichchieu">
