@@ -1,7 +1,6 @@
 import sys
 import os
 
-
 sys.path.append(
     os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 )
@@ -10,6 +9,10 @@ from src.view.admin.staff.view_add import Ui_AddStaff
 from src.view.admin.staff.info import Ui_info
 from src.view.admin.movie.add_movie import Ui_addMovie
 from src.view.admin.movie.info_movie import Ui_info_movie
+from src.view.admin.thongke.TKdoanhthu import Ui_TKdoanhthu
+from src.view.admin.thongke.TKphim import Ui_TKphim
+from src.view.admin.thongke.TKveban import Ui_TKveban
+
 
 
 class MainAdmin(QtWidgets.QMainWindow):
@@ -86,6 +89,8 @@ class MainAdmin(QtWidgets.QMainWindow):
         self.ticket_statistical.setObjectName("ticket_statistical")
         self.revenue_statistical = QtGui.QAction(parent=self)
         self.revenue_statistical.setObjectName("revenue_statistical")
+        self.actionPhim = QtGui.QAction(parent=self)
+        self.actionPhim.setObjectName("actionPhim")
         self.menuQu_n_l_nh_n_vi_n.addAction(self.all_staff)
         self.menuQu_n_l_nh_n_vi_n.addSeparator()
         self.menuQu_n_l_nh_n_vi_n.addAction(self.add_staff)
@@ -98,6 +103,8 @@ class MainAdmin(QtWidgets.QMainWindow):
         self.menuTh_ng_k.addAction(self.ticket_statistical)
         self.menuTh_ng_k.addSeparator()
         self.menuTh_ng_k.addAction(self.revenue_statistical)
+        self.menuTh_ng_k.addSeparator()
+        self.menuTh_ng_k.addAction(self.actionPhim)
         self.menubar.addAction(self.menuQu_n_l_nh_n_vi_n.menuAction())
         self.menubar.addAction(self.menuQu_n_l_phim.menuAction())
         self.menubar.addAction(self.menuL_ch_chi_u.menuAction())
@@ -125,6 +132,7 @@ class MainAdmin(QtWidgets.QMainWindow):
         self.all_calendar.setText(_translate("MainWindow", "Tất cả lịch"))
         self.ticket_statistical.setText(_translate("MainWindow", "Vé phim"))
         self.revenue_statistical.setText(_translate("MainWindow", "Doanh thu"))
+        self.actionPhim.setText(_translate("MainWindow", "Phim"))
 
     def clearLayout(self):
         while self.view.count():
@@ -138,6 +146,9 @@ class MainAdmin(QtWidgets.QMainWindow):
         self.add_staff.triggered.connect(self.showFrameAddStaff)
         self.add_movie.triggered.connect(self.showFrameAddMovie)
         self.all_movie.triggered.connect(self.showFrameALlMovie)
+        self.revenue_statistical.triggered.connect(self.showTKdoanhthu)
+        self.ticket_statistical.triggered.connect(self.showTKveban)
+        self.actionPhim.triggered.connect(self.showTKphim)
 
     def showFrameAllStaff(self):
         self.clearLayout()
@@ -164,6 +175,24 @@ class MainAdmin(QtWidgets.QMainWindow):
         self.clearLayout()
         child_widget = QtWidgets.QWidget()
         child_ui = Ui_info_movie()
+    def showTKdoanhthu(self):
+        self.clearLayout()
+        child_widget = QtWidgets.QWidget()
+        child_ui = Ui_TKdoanhthu()
+        child_ui.setupUi(child_widget)
+        self.view.addWidget(child_widget)
+    
+    def showTKveban(self):
+        self.clearLayout()
+        child_widget = QtWidgets.QWidget()
+        child_ui = Ui_TKveban()
+        child_ui.setupUi(child_widget)
+        self.view.addWidget(child_widget)
+
+    def showTKphim(self):
+        self.clearLayout()
+        child_widget = QtWidgets.QWidget()
+        child_ui = Ui_TKphim()
         child_ui.setupUi(child_widget)
         self.view.addWidget(child_widget)
 
