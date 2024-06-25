@@ -56,9 +56,12 @@ color:rgb(92, 95, 255);</string>
     <property name="styleSheet">
      <string notr="true"/>
     </property>
+    <attribute name="horizontalHeaderStretchLastSection">
+     <bool>true</bool>
+    </attribute>
     <column>
      <property name="text">
-      <string>Tên phim</string>
+      <string>Thời gian</string>
      </property>
     </column>
     <column>
@@ -69,11 +72,6 @@ color:rgb(92, 95, 255);</string>
     <column>
      <property name="text">
       <string>Doanh thu</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Xuất file</string>
      </property>
     </column>
    </widget>
@@ -149,7 +147,7 @@ border: white;</string>
       <rect>
        <x>30</x>
        <y>120</y>
-       <width>121</width>
+       <width>131</width>
        <height>41</height>
       </rect>
      </property>
@@ -166,7 +164,7 @@ border: white;</string>
       <rect>
        <x>30</x>
        <y>220</y>
-       <width>101</width>
+       <width>121</width>
        <height>31</height>
       </rect>
      </property>
@@ -280,6 +278,26 @@ border: white;</string>
       <number>2024</number>
      </property>
     </widget>
+    <widget class="QPushButton" name="button_timkiem">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>290</y>
+       <width>81</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+border: 3px solid white ; /* Đường viền đen dày 2px */
+border-radius: 15px;
+background-color:#27ae60;
+ color: #ffffff;</string>
+     </property>
+     <property name="text">
+      <string>Tìm kiếm</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
@@ -298,14 +316,17 @@ border: white;</string>
     <property name="title">
      <string>Theo tên phim</string>
     </property>
-    <widget class="QTextEdit" name="txt_tenphim">
+    <widget class="QComboBox" name="nameMovie">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>30</y>
-       <width>231</width>
-       <height>31</height>
+       <x>20</x>
+       <y>31</y>
+       <width>251</width>
+       <height>35</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius: 10px</string>
      </property>
     </widget>
    </widget>

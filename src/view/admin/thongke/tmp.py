@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'TKveban.ui'
+# Form implementation generated from reading ui file 'TKphim.ui'
 #
 # Created by: PyQt6 UI code generator 6.7.0
 #
@@ -9,46 +9,47 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_TKveban(object):
-    def setupUi(self, TKveban):
-        TKveban.setObjectName("TKveban")
-        TKveban.resize(1000, 679)
-        self.centralwidget = QtWidgets.QWidget(parent=TKveban)
+class Ui_TKphim(object):
+    def setupUi(self, TKphim):
+        TKphim.setObjectName("TKphim")
+        TKphim.resize(1000, 660)
+        self.centralwidget = QtWidgets.QWidget(parent=TKphim)
         self.centralwidget.setObjectName("centralwidget")
         self.line = QtWidgets.QFrame(parent=self.centralwidget)
-        self.line.setGeometry(QtCore.QRect(400, 0, 20, 641))
+        self.line.setGeometry(QtCore.QRect(380, -20, 20, 721))
         self.line.setFrameShape(QtWidgets.QFrame.Shape.VLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
         self.line.setObjectName("line")
         self.label = QtWidgets.QLabel(parent=self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(110, 20, 191, 61))
+        self.label.setGeometry(QtCore.QRect(90, 0, 191, 61))
         self.label.setStyleSheet("font: 18pt \"MS Shell Dlg 2\";\n"
 "color:rgb(92, 95, 255);")
         self.label.setObjectName("label")
+        self.tableWidget_2 = QtWidgets.QTableWidget(parent=self.centralwidget)
+        self.tableWidget_2.setGeometry(QtCore.QRect(420, 200, 501, 351))
+        self.tableWidget_2.setStyleSheet("")
+        self.tableWidget_2.setObjectName("tableWidget_2")
+        self.tableWidget_2.setColumnCount(3)
+        self.tableWidget_2.setRowCount(0)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget_2.setHorizontalHeaderItem(2, item)
+        self.tableWidget_2.horizontalHeader().setStretchLastSection(True)
         self.widget = QtWidgets.QWidget(parent=self.centralwidget)
-        self.widget.setGeometry(QtCore.QRect(460, 10, 151, 101))
+        self.widget.setGeometry(QtCore.QRect(430, 30, 131, 111))
         self.widget.setObjectName("widget")
         self.label_4 = QtWidgets.QLabel(parent=self.widget)
-        self.label_4.setGeometry(QtCore.QRect(0, 0, 111, 91))
+        self.label_4.setGeometry(QtCore.QRect(0, 0, 111, 101))
+        self.label_4.setStyleSheet("")
         self.label_4.setText("")
-        self.label_4.setPixmap(QtGui.QPixmap("../../../../../ảnh python/tickets.png"))
+        self.label_4.setPixmap(QtGui.QPixmap("../../../../../ảnh python/film-reel.png"))
         self.label_4.setScaledContents(True)
         self.label_4.setObjectName("label_4")
-        self.tableWidget = QtWidgets.QTableWidget(parent=self.centralwidget)
-        self.tableWidget.setGeometry(QtCore.QRect(440, 120, 501, 351))
-        self.tableWidget.setStyleSheet("")
-        self.tableWidget.setObjectName("tableWidget")
-        self.tableWidget.setColumnCount(3)
-        self.tableWidget.setRowCount(0)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(2, item)
-        self.tableWidget.horizontalHeader().setStretchLastSection(True)
         self.groupBox_theothoigian = QtWidgets.QGroupBox(parent=self.centralwidget)
-        self.groupBox_theothoigian.setGeometry(QtCore.QRect(40, 120, 321, 351))
+        self.groupBox_theothoigian.setGeometry(QtCore.QRect(40, 200, 321, 351))
         self.groupBox_theothoigian.setStyleSheet("\n"
 "font: 11pt \"MS Shell Dlg 2\";\n"
 " border-radius: 25px;\n"
@@ -60,12 +61,12 @@ class Ui_TKveban(object):
 "border: white;")
         self.button_ngay.setObjectName("button_ngay")
         self.button_thang = QtWidgets.QRadioButton(parent=self.groupBox_theothoigian)
-        self.button_thang.setGeometry(QtCore.QRect(30, 120, 121, 41))
+        self.button_thang.setGeometry(QtCore.QRect(30, 120, 131, 41))
         self.button_thang.setStyleSheet("font: 12pt \"MS Shell Dlg 2\";\n"
 "border: white;")
         self.button_thang.setObjectName("button_thang")
         self.button_nam = QtWidgets.QRadioButton(parent=self.groupBox_theothoigian)
-        self.button_nam.setGeometry(QtCore.QRect(30, 220, 101, 31))
+        self.button_nam.setGeometry(QtCore.QRect(30, 220, 121, 31))
         self.button_nam.setStyleSheet("font: 12pt \"MS Shell Dlg 2\";\n"
 "border: white;")
         self.button_nam.setObjectName("button_nam")
@@ -104,33 +105,44 @@ class Ui_TKveban(object):
 "background-color:#27ae60;\n"
 " color: #ffffff;")
         self.button_timkiem.setObjectName("button_timkiem")
-        TKveban.setCentralWidget(self.centralwidget)
+        self.groupBox_2 = QtWidgets.QGroupBox(parent=self.centralwidget)
+        self.groupBox_2.setGeometry(QtCore.QRect(50, 70, 291, 91))
+        self.groupBox_2.setStyleSheet("font: 11pt \"MS Shell Dlg 2\";\n"
+" border-radius: 25px;\n"
+"  border: 2px solid #73AD21;")
+        self.groupBox_2.setObjectName("groupBox_2")
+        self.nameMovie = QtWidgets.QComboBox(parent=self.groupBox_2)
+        self.nameMovie.setGeometry(QtCore.QRect(20, 31, 251, 35))
+        self.nameMovie.setStyleSheet("border-radius: 10px")
+        self.nameMovie.setObjectName("nameMovie")
+        TKphim.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(TKveban)
-        QtCore.QMetaObject.connectSlotsByName(TKveban)
+        self.retranslateUi(TKphim)
+        QtCore.QMetaObject.connectSlotsByName(TKphim)
 
-    def retranslateUi(self, TKveban):
+    def retranslateUi(self, TKphim):
         _translate = QtCore.QCoreApplication.translate
-        TKveban.setWindowTitle(_translate("TKveban", "MainWindow"))
-        self.label.setText(_translate("TKveban", "Bộ lọc thống kê"))
-        item = self.tableWidget.horizontalHeaderItem(0)
-        item.setText(_translate("TKveban", "Thời gian"))
-        item = self.tableWidget.horizontalHeaderItem(1)
-        item.setText(_translate("TKveban", "Tổng vé"))
-        item = self.tableWidget.horizontalHeaderItem(2)
-        item.setText(_translate("TKveban", "Doanh thu"))
-        self.groupBox_theothoigian.setTitle(_translate("TKveban", "Theo thời gian"))
-        self.button_ngay.setText(_translate("TKveban", "Theo ngày"))
-        self.button_thang.setText(_translate("TKveban", "Theo tháng"))
-        self.button_nam.setText(_translate("TKveban", "Theo năm"))
-        self.button_timkiem.setText(_translate("TKveban", "Tìm kiếm"))
+        TKphim.setWindowTitle(_translate("TKphim", "MainWindow"))
+        self.label.setText(_translate("TKphim", "Bộ lọc thống kê"))
+        item = self.tableWidget_2.horizontalHeaderItem(0)
+        item.setText(_translate("TKphim", "Tên phim"))
+        item = self.tableWidget_2.horizontalHeaderItem(1)
+        item.setText(_translate("TKphim", "Số lượng vé"))
+        item = self.tableWidget_2.horizontalHeaderItem(2)
+        item.setText(_translate("TKphim", "Doanh thu"))
+        self.groupBox_theothoigian.setTitle(_translate("TKphim", "Theo thời gian"))
+        self.button_ngay.setText(_translate("TKphim", "Theo ngày"))
+        self.button_thang.setText(_translate("TKphim", "Theo tháng"))
+        self.button_nam.setText(_translate("TKphim", "Theo năm"))
+        self.button_timkiem.setText(_translate("TKphim", "Tìm kiếm"))
+        self.groupBox_2.setTitle(_translate("TKphim", "Theo tên phim"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    TKveban = QtWidgets.QMainWindow()
-    ui = Ui_TKveban()
-    ui.setupUi(TKveban)
-    TKveban.show()
+    TKphim = QtWidgets.QMainWindow()
+    ui = Ui_TKphim()
+    ui.setupUi(TKphim)
+    TKphim.show()
     sys.exit(app.exec())
