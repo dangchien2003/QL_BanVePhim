@@ -1,14 +1,13 @@
 import mysql.connector
 import sys
 import os
-
 sys.path.append(
     os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 )
-import bean.load_env
+
 from mysql.connector import Error
 
-
+import bean.load_env
 class MysqlConnect:
     def __init__(self):
         active = os.getenv("ACTIVE").strip().lower()
