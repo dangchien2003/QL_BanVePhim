@@ -1,6 +1,8 @@
 import sys
 import os
 
+
+
 sys.path.append(
     os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 )
@@ -12,6 +14,7 @@ from src.view.admin.movie.info_movie import Ui_info_movie
 from src.view.admin.thongke.TKdoanhthu import Ui_TKdoanhthu
 from src.view.admin.thongke.TKphim import Ui_TKphim
 from src.view.admin.thongke.TKveban import Ui_TKveban
+from src.view.admin.lichchieu.them_lichchieu import Ui_them_lichchieu
 
 
 class MainAdmin(QtWidgets.QMainWindow):
@@ -148,6 +151,7 @@ class MainAdmin(QtWidgets.QMainWindow):
         self.revenue_statistical.triggered.connect(self.showTKdoanhthu)
         self.ticket_statistical.triggered.connect(self.showTKveban)
         self.actionPhim.triggered.connect(self.showTKphim)
+        self.add_calendar.triggered.connect(self.showThemLichChieu)
 
     def showFrameAllStaff(self):
         self.clearLayout()
@@ -195,6 +199,13 @@ class MainAdmin(QtWidgets.QMainWindow):
         self.clearLayout()
         child_widget = QtWidgets.QWidget()
         child_ui = Ui_TKphim()
+        child_ui.setupUi(child_widget)
+        self.view.addWidget(child_widget)
+
+    def showThemLichChieu(self):
+        self.clearLayout()
+        child_widget = QtWidgets.QWidget()
+        child_ui = Ui_them_lichchieu()
         child_ui.setupUi(child_widget)
         self.view.addWidget(child_widget)
 
