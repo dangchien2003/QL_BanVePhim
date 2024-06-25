@@ -285,7 +285,6 @@ class Ui_info(object):
         if result.success is False:
             QtWidgets.QMessageBox.warning(None, "Thông báo", result.message)
             return
-
         self.addTableData(result.data)
         return
 
@@ -347,7 +346,7 @@ class Ui_info(object):
         if result.success is False:
             toast.toastWarning(result.message)
             return
-
+        self.block_radio.setChecked(True)
         toast.toastInfo(f"Đã khoá: {idnv}")
 
     def showAllStaff(self):

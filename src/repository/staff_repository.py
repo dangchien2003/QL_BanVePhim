@@ -25,7 +25,7 @@ class StaffRepository:
         return self.excute.getAll(query)
 
     def getStaffById(self, id):
-        query = f"SELECT * FROM staff WHERE idnv = '{id}'"
+        query = f"SELECT * FROM staff WHERE idnv like '%{id}%'"
         return self.excute.getOne(query)
 
     def getStaffByName(self, name):

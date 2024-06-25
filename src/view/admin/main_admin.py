@@ -14,7 +14,6 @@ from src.view.admin.thongke.TKphim import Ui_TKphim
 from src.view.admin.thongke.TKveban import Ui_TKveban
 
 
-
 class MainAdmin(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
@@ -175,13 +174,16 @@ class MainAdmin(QtWidgets.QMainWindow):
         self.clearLayout()
         child_widget = QtWidgets.QWidget()
         child_ui = Ui_info_movie()
+        child_ui.setupUi(child_widget)
+        self.view.addWidget(child_widget)
+
     def showTKdoanhthu(self):
         self.clearLayout()
         child_widget = QtWidgets.QWidget()
         child_ui = Ui_TKdoanhthu()
         child_ui.setupUi(child_widget)
         self.view.addWidget(child_widget)
-    
+
     def showTKveban(self):
         self.clearLayout()
         child_widget = QtWidgets.QWidget()
