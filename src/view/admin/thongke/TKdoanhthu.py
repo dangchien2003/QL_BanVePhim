@@ -10,11 +10,15 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 from src.controller.TKdoanhthu_controller import TKdoanhthu_controller
 from src.util import toast
 from src.model.dulieudoanhthu import DuLieuDoanhThu
+
+
 class Ui_TKdoanhthu(object):
     selected = 0
+
     def __init__(self):
         self.tkDoanhThu_Controler = TKdoanhthu_controller()
         return
+
     def setupUi(self, TKdoanhthu):
         TKdoanhthu.setObjectName("TKdoanhthu")
         TKdoanhthu.resize(1000, 673)
@@ -25,13 +29,14 @@ class Ui_TKdoanhthu(object):
         self.line.setObjectName("line")
         self.label = QtWidgets.QLabel(parent=TKdoanhthu)
         self.label.setGeometry(QtCore.QRect(70, 60, 191, 61))
-        self.label.setStyleSheet("font: 18pt \"MS Shell Dlg 2\";\n"
-"color:rgb(92, 95, 255);")
+        self.label.setStyleSheet(
+            'font: 18pt "MS Shell Dlg 2";\n' "color:rgb(92, 95, 255);"
+        )
         self.label.setObjectName("label")
         self.tableWidget = QtWidgets.QTableWidget(parent=TKdoanhthu)
         self.tableWidget.setGeometry(QtCore.QRect(410, 160, 531, 351))
         self.tableWidget.setObjectName("tableWidget")
-        self.tableWidget.setColumnCount(6)
+        self.tableWidget.setColumnCount(5)
         self.tableWidget.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(0, item)
@@ -54,25 +59,28 @@ class Ui_TKdoanhthu(object):
         self.label_3.setObjectName("label_3")
         self.groupBox_theothoigian = QtWidgets.QGroupBox(parent=TKdoanhthu)
         self.groupBox_theothoigian.setGeometry(QtCore.QRect(30, 160, 321, 351))
-        self.groupBox_theothoigian.setStyleSheet("\n"
-"font: 11pt \"MS Shell Dlg 2\";\n"
-" border-radius: 25px;\n"
-"  border: 2px solid #73AD21;")
+        self.groupBox_theothoigian.setStyleSheet(
+            "\n"
+            'font: 11pt "MS Shell Dlg 2";\n'
+            " border-radius: 25px;\n"
+            "  border: 2px solid #73AD21;"
+        )
         self.groupBox_theothoigian.setObjectName("groupBox_theothoigian")
         self.button_ngay = QtWidgets.QRadioButton(parent=self.groupBox_theothoigian)
         self.button_ngay.setGeometry(QtCore.QRect(30, 40, 121, 31))
-        self.button_ngay.setStyleSheet("font: 12pt \"MS Shell Dlg 2\";\n"
-"border: white;")
+        self.button_ngay.setStyleSheet(
+            'font: 12pt "MS Shell Dlg 2";\n' "border: white;"
+        )
         self.button_ngay.setObjectName("button_ngay")
         self.button_thang = QtWidgets.QRadioButton(parent=self.groupBox_theothoigian)
         self.button_thang.setGeometry(QtCore.QRect(30, 120, 121, 41))
-        self.button_thang.setStyleSheet("font: 12pt \"MS Shell Dlg 2\";\n"
-"border: white;")
+        self.button_thang.setStyleSheet(
+            'font: 12pt "MS Shell Dlg 2";\n' "border: white;"
+        )
         self.button_thang.setObjectName("button_thang")
         self.button_nam = QtWidgets.QRadioButton(parent=self.groupBox_theothoigian)
         self.button_nam.setGeometry(QtCore.QRect(30, 220, 101, 31))
-        self.button_nam.setStyleSheet("font: 12pt \"MS Shell Dlg 2\";\n"
-"border: white;")
+        self.button_nam.setStyleSheet('font: 12pt "MS Shell Dlg 2";\n' "border: white;")
         self.button_nam.setObjectName("button_nam")
         self.box_ngay = QtWidgets.QSpinBox(parent=self.groupBox_theothoigian)
         self.box_ngay.setGeometry(QtCore.QRect(50, 80, 101, 31))
@@ -103,11 +111,13 @@ class Ui_TKdoanhthu(object):
         self.box_nam.setObjectName("box_nam")
         self.button_timkiem = QtWidgets.QPushButton(parent=self.groupBox_theothoigian)
         self.button_timkiem.setGeometry(QtCore.QRect(180, 290, 81, 41))
-        self.button_timkiem.setStyleSheet("font: 10pt \"MS Shell Dlg 2\";\n"
-"border: 3px solid white ; /* Đường viền đen dày 2px */\n"
-"border-radius: 15px;\n"
-"background-color:#27ae60;\n"
-" color: #ffffff;")
+        self.button_timkiem.setStyleSheet(
+            'font: 10pt "MS Shell Dlg 2";\n'
+            "border: 3px solid white ; /* Đường viền đen dày 2px */\n"
+            "border-radius: 15px;\n"
+            "background-color:#27ae60;\n"
+            " color: #ffffff;"
+        )
         self.button_timkiem.setObjectName("button_timkiem")
 
         self.retranslateUi(TKdoanhthu)
@@ -133,45 +143,54 @@ class Ui_TKdoanhthu(object):
         self.button_nam.setText(_translate("TKdoanhthu", "Theo năm"))
         self.button_timkiem.setText(_translate("TKdoanhthu", "Tìm kiếm"))
         self.setEvents()
-    
+
     def getSelected(self):
         if self.button_ngay.isChecked():
-            self.selected =1
+            self.selected = 1
         elif self.button_thang.isChecked():
             self.selected = 2
         elif self.button_nam.isChecked():
-            self.selected =3
-
+            self.selected = 3
 
     def setEvents(self):
         self.button_timkiem.mousePressEvent = self.getData
 
     def getData(self, event):
         self.getSelected()
-        result = self.tkDoanhThu_Controler.getData(self.selected, self.box_ngay.value(), self.box_thang.value(), self.box_nam.value())
-        if result.success ==False:
+        result = self.tkDoanhThu_Controler.getData(
+            self.selected,
+            self.box_ngay.value(),
+            self.box_thang.value(),
+            self.box_nam.value(),
+        )
+        if result.success == False:
             toast.toastWarning(result.message)
             return
-        result = self.tkDoanhThu_Controler.getData(self.selected, self.box_ngay.value(), self.box_thang.value(), self.box_nam.value())
-        if result.success == False:
-            print(result.message)  # Hoặc xử lý thông báo lỗi cho người dùng
-        else:
-            print("Dữ liệu thành công:", result.data)
-       
         self.putdata(result.data)
 
     def putdata(self, data: list[DuLieuDoanhThu]):
         self.tableWidget.setRowCount(len(data))
         for row_idx, row_data in enumerate(data):
-            self.tableWidget.setItem(row_idx, 0, QtWidgets.QTableWidgetItem(str(data[row_idx].date)))
-            self.tableWidget.setItem(row_idx, 1, QtWidgets.QTableWidgetItem(str(data[row_idx].doanhthuve)))
-            self.tableWidget.setItem(row_idx, 2, QtWidgets.QTableWidgetItem(str(data[row_idx].doanhthunuoc)))
-            self.tableWidget.setItem(row_idx, 3, QtWidgets.QTableWidgetItem(str(data[row_idx].doanhthubong)))
-            self.tableWidget.setItem(row_idx, 4, QtWidgets.QTableWidgetItem(str(data[row_idx].tong)))
+            self.tableWidget.setItem(
+                row_idx, 0, QtWidgets.QTableWidgetItem(str(data[row_idx].date))
+            )
+            self.tableWidget.setItem(
+                row_idx, 1, QtWidgets.QTableWidgetItem(str(data[row_idx].doanhthuve))
+            )
+            self.tableWidget.setItem(
+                row_idx, 2, QtWidgets.QTableWidgetItem(str(data[row_idx].doanhthunuoc))
+            )
+            self.tableWidget.setItem(
+                row_idx, 3, QtWidgets.QTableWidgetItem(str(data[row_idx].doanhthubong))
+            )
+            self.tableWidget.setItem(
+                row_idx, 4, QtWidgets.QTableWidgetItem(str(data[row_idx].tong))
+            )
 
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     TKdoanhthu = QtWidgets.QMainWindow()
     ui = Ui_TKdoanhthu()

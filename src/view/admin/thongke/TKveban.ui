@@ -82,9 +82,18 @@ color:rgb(92, 95, 255);</string>
       <height>351</height>
      </rect>
     </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
     <property name="styleSheet">
      <string notr="true"/>
     </property>
+    <attribute name="horizontalHeaderStretchLastSection">
+     <bool>true</bool>
+    </attribute>
     <column>
      <property name="text">
       <string>Thời gian</string>
@@ -98,11 +107,6 @@ color:rgb(92, 95, 255);</string>
     <column>
      <property name="text">
       <string>Doanh thu</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Xuất file</string>
      </property>
     </column>
    </widget>
@@ -196,6 +200,9 @@ border: white;</string>
        <height>31</height>
       </size>
      </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
      <property name="styleSheet">
       <string notr="true">border:707070;</string>
      </property>
@@ -275,6 +282,26 @@ border: white;</string>
      </property>
      <property name="maximum">
       <number>2024</number>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="button_timkiem">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>290</y>
+       <width>81</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+border: 3px solid white ; /* Đường viền đen dày 2px */
+border-radius: 15px;
+background-color:#27ae60;
+ color: #ffffff;</string>
+     </property>
+     <property name="text">
+      <string>Tìm kiếm</string>
      </property>
     </widget>
    </widget>
