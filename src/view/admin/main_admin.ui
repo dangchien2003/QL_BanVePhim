@@ -46,7 +46,7 @@
      <x>0</x>
      <y>0</y>
      <width>1001</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuQu_n_l_nh_n_vi_n">
@@ -80,6 +80,8 @@
     <addaction name="ticket_statistical"/>
     <addaction name="separator"/>
     <addaction name="revenue_statistical"/>
+    <addaction name="separator"/>
+    <addaction name="actionPhim"/>
    </widget>
    <addaction name="menuQu_n_l_nh_n_vi_n"/>
    <addaction name="menuQu_n_l_phim"/>
@@ -125,6 +127,11 @@
   <action name="revenue_statistical">
    <property name="text">
     <string>Doanh thu</string>
+   </property>
+  </action>
+  <action name="actionPhim">
+   <property name="text">
+    <string>Phim</string>
    </property>
   </action>
  </widget>
