@@ -64,6 +64,7 @@ class Ui_FrameLogin(object):
         self.password.setGeometry(QtCore.QRect(130, 140, 221, 31))
         self.password.setStyleSheet("")
         self.password.setObjectName("password")
+        self.password.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
         self.btn_login = QtWidgets.QPushButton(parent=FrameLogin)
         self.btn_login.setGeometry(QtCore.QRect(130, 210, 151, 28))
         self.btn_login.setStyleSheet(
