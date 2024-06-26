@@ -106,6 +106,12 @@ class TicketService:
         if resultTicket[7] * 60 + resultTicket[1] < gen_time.getNowTimestamp():
             return Res(False, "Vé đã hết hạn sử dụng")
 
+        if resultTicket[1] - gen_time.getNowTimestamp() > 15 * 60:
+            return Res(
+                False,
+                f"Sử dụng vé quá sớm\nPhim chiếu lúc: {time.convertTimeStampToString(resultTicket[1], '%H:%M %d-%m-%Y')}",
+            )
+
         resultSeat = self.seatRepository.getInfoSeat(ticket)
         resultSeat = [item for tup in resultSeat for item in tup]
 
