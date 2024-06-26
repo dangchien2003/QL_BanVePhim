@@ -59,7 +59,7 @@ class Ui_TKphim(object):
         self.label_4.setGeometry(QtCore.QRect(0, 0, 111, 101))
         self.label_4.setStyleSheet("")
         self.label_4.setText("")
-        self.label_4.setPixmap(QtGui.QPixmap("../../../../../ảnh python/film-reel.png"))
+        self.label_4.setPixmap(QtGui.QPixmap("public/film-reel.png"))
         self.label_4.setScaledContents(True)
         self.label_4.setObjectName("label_4")
         self.groupBox_theothoigian = QtWidgets.QGroupBox(parent=self.centralwidget)

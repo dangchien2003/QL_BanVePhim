@@ -17,7 +17,8 @@ from src.util import toast
 
 
 class Ui_them_lichchieu(object):
-    def __init__(self):
+    def __init__(self, main):
+        self.main = main
         self.lichChieuController = LichChieuController()
         self.listMovie = []
 
@@ -224,6 +225,7 @@ class Ui_them_lichchieu(object):
         self.button_sua.clicked.connect(self.themLich)
         self.combox_tenphim.currentIndexChanged.connect(self.thayDoiThoiGianKetThuc)
         self.time_begin.timeChanged.connect(self.thayDoiThoiGianKetThuc)
+        self.button_quayve.clicked.connect(self.main.showTTLichChieu)
 
     def thayDoiThoiGianKetThuc(self):
         timeMovie = self.listMovie[self.combox_tenphim.currentIndex()]["time"]
@@ -266,7 +268,7 @@ class Ui_them_lichchieu(object):
                 row_idx, 1, QtWidgets.QTableWidgetItem(str(row_data["room"]))
             )
             self.table_lichchieu.setItem(
-                row_idx, 2, QtWidgets.QTableWidgetItem(str(row_data["day"]))
+                row_idx, 2, QtWidgets.QTableWidgetItem(str(row_data["date"]))
             )
             self.table_lichchieu.setItem(
                 row_idx, 3, QtWidgets.QTableWidgetItem(str(row_data["timestart"]))

@@ -14,6 +14,7 @@ from src.view.admin.thongke.TKdoanhthu import Ui_TKdoanhthu
 from src.view.admin.thongke.TKphim import Ui_TKphim
 from src.view.admin.thongke.TKveban import Ui_TKveban
 from src.view.admin.lichchieu.them_lichchieu import Ui_them_lichchieu
+from src.view.admin.lichchieu.info_lichchieu import Ui_infor_lichchieu
 
 
 class MainAdmin(QtWidgets.QMainWindow):
@@ -151,60 +152,75 @@ class MainAdmin(QtWidgets.QMainWindow):
         self.ticket_statistical.triggered.connect(self.showTKveban)
         self.actionPhim.triggered.connect(self.showTKphim)
         self.add_calendar.triggered.connect(self.showThemLichChieu)
+        self.all_calendar.triggered.connect(self.showTTLichChieu)
 
     def showFrameAllStaff(self):
         self.clearLayout()
-        child_widget = QtWidgets.QWidget()
-        child_ui = Ui_info()
-        child_ui.setupUi(child_widget)
-        self.view.addWidget(child_widget)
+        self.child_widget = QtWidgets.QWidget()
+        self.child_ui = Ui_info()
+        self.child_ui.setupUi(self.child_widget)
+        self.view.addWidget(self.child_widget)
 
     def showFrameAddStaff(self):
         self.clearLayout()
-        child_widget = QtWidgets.QWidget()
-        child_ui = Ui_AddStaff()
-        child_ui.setupUi(child_widget)
-        self.view.addWidget(child_widget)
+        self.child_widget = QtWidgets.QWidget()
+        self.child_ui = Ui_AddStaff()
+        self.child_ui.setupUi(self.child_widget)
+        self.view.addWidget(self.child_widget)
 
     def showFrameAddMovie(self):
         self.clearLayout()
-        child_widget = QtWidgets.QWidget()
-        child_ui = Ui_addMovie()
-        child_ui.setupUi(child_widget)
-        self.view.addWidget(child_widget)
+        self.child_widget = QtWidgets.QWidget()
+        self.child_ui = Ui_addMovie()
+        self.child_ui.setupUi(self.child_widget)
+        self.view.addWidget(self.child_widget)
 
     def showFrameALlMovie(self):
         self.clearLayout()
-        child_widget = QtWidgets.QWidget()
-        child_ui = Ui_info_movie()
-        child_ui.setupUi(child_widget)
-        self.view.addWidget(child_widget)
+        self.child_widget = QtWidgets.QWidget()
+        self.child_ui = Ui_info_movie()
+        self.child_ui.setupUi(self.child_widget)
+        self.view.addWidget(self.child_widget)
 
     def showTKdoanhthu(self):
         self.clearLayout()
-        child_widget = QtWidgets.QWidget()
-        child_ui = Ui_TKdoanhthu()
-        child_ui.setupUi(child_widget)
-        self.view.addWidget(child_widget)
+        self.child_widget = QtWidgets.QWidget()
+        self.child_ui = Ui_TKdoanhthu()
+        self.child_ui.setupUi(self.child_widget)
+        self.view.addWidget(self.child_widget)
 
     def showTKveban(self):
         self.clearLayout()
-        child_widget = QtWidgets.QWidget()
-        child_ui = Ui_TKveban()
-        child_ui.setupUi(child_widget)
-        self.view.addWidget(child_widget)
+        self.child_widget = QtWidgets.QWidget()
+        self.child_ui = Ui_TKveban()
+        self.child_ui.setupUi(self.child_widget)
+        self.view.addWidget(self.child_widget)
 
     def showTKphim(self):
         self.clearLayout()
-        child_widget = QtWidgets.QWidget()
-        child_ui = Ui_TKphim()
-        child_ui.setupUi(child_widget)
-        self.view.addWidget(child_widget)
+        self.child_widget = QtWidgets.QWidget()
+        self.child_ui = Ui_TKphim()
+        self.child_ui.setupUi(self.child_widget)
+        self.view.addWidget(self.child_widget)
 
     def showThemLichChieu(self):
         self.clearLayout()
         self.child_widget = QtWidgets.QWidget()
         self.child_ui = Ui_them_lichchieu()
+        self.child_ui.setupUi(self.child_widget)
+        self.view.addWidget(self.child_widget)
+
+    def showThemLichChieu(self):
+        self.clearLayout()
+        self.child_widget = QtWidgets.QWidget()
+        self.child_ui = Ui_them_lichchieu(self)
+        self.child_ui.setupUi(self.child_widget)
+        self.view.addWidget(self.child_widget)
+
+    def showTTLichChieu(self):
+        self.clearLayout()
+        self.child_widget = QtWidgets.QWidget()
+        self.child_ui = Ui_infor_lichchieu(self)
         self.child_ui.setupUi(self.child_widget)
         self.view.addWidget(self.child_widget)
 

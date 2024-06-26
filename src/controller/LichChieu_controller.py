@@ -21,3 +21,9 @@ class LichChieuController:
 
     def themLich(self, movie, room, datetime):
         return self.lichChieuService.add_lichchieu(movie, room, datetime)
+
+    def cancleCalendar(self, id):
+        return self.lichChieuService.cancle(id)
+
+    def editCalendar(self, id, movie, room, datetime):
+        return self.lichChieuService.edit(id, movie, room, datetime)

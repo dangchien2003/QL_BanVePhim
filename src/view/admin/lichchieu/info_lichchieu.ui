@@ -72,9 +72,9 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>486</x>
-      <y>230</y>
-      <width>61</width>
+      <x>476</x>
+      <y>310</y>
+      <width>81</width>
       <height>20</height>
      </rect>
     </property>
@@ -88,8 +88,8 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>490</x>
-      <y>300</y>
+      <x>460</x>
+      <y>380</y>
       <width>91</width>
       <height>20</height>
      </rect>
@@ -104,8 +104,8 @@
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>490</x>
-      <y>360</y>
+      <x>470</x>
+      <y>440</y>
       <width>81</width>
       <height>20</height>
      </rect>
@@ -120,9 +120,9 @@
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>490</x>
-      <y>420</y>
-      <width>81</width>
+      <x>460</x>
+      <y>500</y>
+      <width>91</width>
       <height>20</height>
      </rect>
     </property>
@@ -136,9 +136,9 @@
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>490</x>
-      <y>480</y>
-      <width>81</width>
+      <x>710</x>
+      <y>500</y>
+      <width>91</width>
       <height>20</height>
      </rect>
     </property>
@@ -186,36 +186,14 @@ background-color: #e74c3c;
  color: #ffffff;</string>
     </property>
     <property name="text">
-     <string>Xoá</string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="txt_tenphim">
-    <property name="geometry">
-     <rect>
-      <x>580</x>
-      <y>220</y>
-      <width>221</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
-border: 3px solid white ; /* Đường viền đen dày 2px */
-border-radius: 15px;</string>
-    </property>
-    <property name="html">
-     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8.25pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>Huỷ</string>
     </property>
    </widget>
    <widget class="QTextEdit" name="txt_phongchieu">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>290</y>
+      <x>570</x>
+      <y>370</y>
       <width>221</width>
       <height>31</height>
      </rect>
@@ -226,14 +204,14 @@ font: 10pt &quot;MS Shell Dlg 2&quot;;
 border-radius: 15px;</string>
     </property>
     <property name="readOnly">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QDateEdit" name="date_ngaychieu">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>350</y>
+      <x>570</x>
+      <y>430</y>
       <width>111</width>
       <height>31</height>
      </rect>
@@ -245,8 +223,8 @@ border-radius: 15px;</string>
    <widget class="QTimeEdit" name="time_begin">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>420</y>
+      <x>570</x>
+      <y>490</y>
       <width>111</width>
       <height>31</height>
      </rect>
@@ -255,8 +233,8 @@ border-radius: 15px;</string>
    <widget class="QTimeEdit" name="time_end">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>470</y>
+      <x>810</x>
+      <y>490</y>
       <width>111</width>
       <height>31</height>
      </rect>
@@ -432,6 +410,62 @@ color: rgb(255, 92, 43);</string>
     </property>
     <property name="text">
      <string>Vui lòng nhập đầy đủ thông tin</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="txt_tenphim_2">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>240</y>
+      <width>221</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+border: 3px solid white ; /* Đường viền đen dày 2px */
+border-radius: 15px;</string>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8.25pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_11">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>250</y>
+      <width>41</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Id</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="combox_tenphim">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>300</y>
+      <width>221</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 3px solid white ; /* Đường viền đen dày 2px */
+font: 10pt &quot;MS Shell Dlg 2&quot;;
+border-radius: 15px;</string>
     </property>
    </widget>
   </widget>

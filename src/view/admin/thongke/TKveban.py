@@ -38,7 +38,7 @@ class Ui_TKveban(object):
         self.label_4 = QtWidgets.QLabel(parent=self.widget)
         self.label_4.setGeometry(QtCore.QRect(0, 0, 111, 91))
         self.label_4.setText("")
-        self.label_4.setPixmap(QtGui.QPixmap("../../../../../ảnh python/tickets.png"))
+        self.label_4.setPixmap(QtGui.QPixmap("public/tickets.png"))
         self.label_4.setScaledContents(True)
         self.label_4.setObjectName("label_4")
         self.tableWidget = QtWidgets.QTableWidget(parent=self.centralwidget)

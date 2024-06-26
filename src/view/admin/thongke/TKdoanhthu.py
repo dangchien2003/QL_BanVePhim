@@ -54,7 +54,7 @@ class Ui_TKdoanhthu(object):
         self.label_3 = QtWidgets.QLabel(parent=self.widget)
         self.label_3.setGeometry(QtCore.QRect(0, 0, 101, 91))
         self.label_3.setText("")
-        self.label_3.setPixmap(QtGui.QPixmap("../../../../../ảnh python/thongke.png"))
+        self.label_3.setPixmap(QtGui.QPixmap("public/thongke.png"))
         self.label_3.setScaledContents(True)
         self.label_3.setObjectName("label_3")
         self.groupBox_theothoigian = QtWidgets.QGroupBox(parent=TKdoanhthu)
