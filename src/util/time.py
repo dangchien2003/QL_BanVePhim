@@ -17,6 +17,7 @@ def convertTimeToTimestamp(date, formatDate):
         time_object = datetime.strptime(date, formatDate)
         timestamp = time_object.timestamp()
         return timestamp
-    except:
+    except Exception as e:
+        print(e)
         print("Lỗi chuyển timestamp")
         return None

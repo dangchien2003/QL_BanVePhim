@@ -67,6 +67,7 @@ class Ui_them_lichchieu(object):
         self.time_begin = QtWidgets.QTimeEdit(parent=self.centralwidget)
         self.time_begin.setGeometry(QtCore.QRect(590, 410, 111, 31))
         self.time_begin.setObjectName("time_begin")
+        self.time_begin.setDisplayFormat("HH:mm")
         self.comboBox = QtWidgets.QComboBox(parent=self.centralwidget)
         self.comboBox.setGeometry(QtCore.QRect(50, 140, 121, 31))
         self.comboBox.setObjectName("comboBox")
@@ -84,8 +85,8 @@ class Ui_them_lichchieu(object):
         self.line.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
         self.line.setObjectName("line")
         self.date_ngaychieu = QtWidgets.QDateEdit(parent=self.centralwidget)
+
         self.date_ngaychieu.setGeometry(QtCore.QRect(590, 340, 111, 31))
-        self.date_ngaychieu.setReadOnly(True)
         self.date_ngaychieu.setObjectName("date_ngaychieu")
         self.table_lichchieu = QtWidgets.QTableWidget(parent=self.centralwidget)
         self.table_lichchieu.setGeometry(QtCore.QRect(40, 220, 321, 191))
@@ -139,6 +140,7 @@ class Ui_them_lichchieu(object):
         )
         self.button_timkiem.setObjectName("button_timkiem")
         self.time_end = QtWidgets.QTimeEdit(parent=self.centralwidget)
+        self.time_end.setDisplayFormat("HH:mm")
         self.time_end.setGeometry(QtCore.QRect(590, 460, 111, 31))
         self.time_end.setReadOnly(True)
         self.time_end.setObjectName("time_end")
@@ -212,49 +214,81 @@ class Ui_them_lichchieu(object):
         self.button_quayve.setText(
             _translate("them_lichchieu", "QUAY LẠI DANH SÁCH LỊCH CHIẾU")
         )
+        self.txt_phongchieu.setText("Phòng 1")
         self.setEvent()
         self.getMovie()
 
     def setEvent(self):
-        self.button_timkiem.mousePressEvent = self.searchTimKiem
+        self.button_timkiem.clicked.connect(self.searchTimKiem)
+        self.comboBox.currentIndexChanged.connect(self.thaydoiphong)
+        self.button_sua.clicked.connect(self.themLich)
+        self.combox_tenphim.currentIndexChanged.connect(self.thayDoiThoiGianKetThuc)
+        self.time_begin.timeChanged.connect(self.thayDoiThoiGianKetThuc)
 
-    def searchTimKiem(self, event):
+    def thayDoiThoiGianKetThuc(self):
+        timeMovie = self.listMovie[self.combox_tenphim.currentIndex()]["time"]
+        new_time = self.time_begin.time().addSecs(timeMovie * 60)
+        self.time_end.setTime(new_time)
+
+    def thaydoiphong(self):
+        self.txt_phongchieu.setText(self.comboBox.currentText())
+
+    def themLich(self):
+        result = self.lichChieuController.themLich(
+            self.listMovie[self.combox_tenphim.currentIndex()]["id"],
+            self.txt_phongchieu.toPlainText(),
+            f"{self.time_begin.text()} {self.date_ngaychieu.text()}",
+        )
+
+        if result.success == False:
+            toast.toastWarning(result.message)
+            return
+        toast.toastInfo("Thêm thành công")
+
+    def searchTimKiem(self):
         date = self.date_timkiem.text()
         selected_room = self.comboBox.currentText()
         result = self.lichChieuController.searchTimKiem(date, selected_room)
         if result.success == False:
-             toast.toastWarning(result.message)
-             return
+            toast.toastWarning(result.message)
+            return
         self.putdata(result.data)
         return
-    #đẩy dữ liệu tìm kiếm lên table
+
+    # đẩy dữ liệu tìm kiếm lên table
     def putdata(self, data: list):
         self.table_lichchieu.setRowCount(len(data))
         for row_idx, row_data in enumerate(data):
-            self.table_lichchieu.setItem(row_idx, 0, QtWidgets.QTableWidgetItem(str(row_data["name"])))
-            self.table_lichchieu.setItem(row_idx, 1, QtWidgets.QTableWidgetItem(str(row_data["room"])))
-            self.table_lichchieu.setItem(row_idx, 2, QtWidgets.QTableWidgetItem(str(row_data["day"])))
-            self.table_lichchieu.setItem(row_idx, 3, QtWidgets.QTableWidgetItem(str(row_data["timestart"])))
-            self.table_lichchieu.setItem(row_idx, 4, QtWidgets.QTableWidgetItem(str(row_data["timeend"])))
+            self.table_lichchieu.setItem(
+                row_idx, 0, QtWidgets.QTableWidgetItem(str(row_data["name"]))
+            )
+            self.table_lichchieu.setItem(
+                row_idx, 1, QtWidgets.QTableWidgetItem(str(row_data["room"]))
+            )
+            self.table_lichchieu.setItem(
+                row_idx, 2, QtWidgets.QTableWidgetItem(str(row_data["day"]))
+            )
+            self.table_lichchieu.setItem(
+                row_idx, 3, QtWidgets.QTableWidgetItem(str(row_data["timestart"]))
+            )
+            self.table_lichchieu.setItem(
+                row_idx, 4, QtWidgets.QTableWidgetItem(str(row_data["timeend"]))
+            )
 
     def getMovie(self):
         result = self.lichChieuController.fetch_movie()
         if result.success is False:
             toast.toastWarning(result.message)
             return
-        
+
         self.listMovie = result.data
         for movie in self.listMovie:
             self.combox_tenphim.addItem(movie["name"])
-        
+
         # lấy index đang select cảu combobõ tên phim
         # tương ứng với index trong listmovie
 
         # muốn lấy id phim đang muốn thêm lịch thì sẽ lấy phần tử thứ index của listmovie
-
-
-
-
 
 
 if __name__ == "__main__":

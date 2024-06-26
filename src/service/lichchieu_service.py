@@ -9,11 +9,14 @@ from src.repository.lichchieu_repository import LichChieuRepository
 from src.util.Lichchieu import LichchieuUtil
 from src.util.response import Res
 from src.util import time
+from src.util.genarate import gen_time, gen_number
+from src.repository.movie_repository import MovieRepository
 
 
 class LichChieuService:
     def __init__(self):
         self.lichChieuRepository = LichChieuRepository()
+        self.movieRepository = MovieRepository()
         self.LichchieuUtil = LichchieuUtil()
 
     def searchTimKiem(self, date, selected_room):
@@ -51,6 +54,38 @@ class LichChieuService:
             return Res(False, "Lỗi truy vấn dữ liệu")
         movies = []
         for item in data:
-            movie = {"id": item[0], "name": item[1]}
+            movie = {"id": item[0], "name": item[1], "time": item[2]}
             movies.append(movie)
         return Res(success=True, data=movies)
+
+    def add_lichchieu(self, movie, room: str, datetime):
+
+        playAt = int(time.convertTimeToTimestamp(datetime, "%H:%M %d/%m/%Y"))
+        if playAt < gen_time.getNowTimestamp():
+            return Res(False, "Thời gian chiếu không hợp lệ")
+        movies = self.movieRepository.findMovieById(movie)
+        if len(movies) == 0:
+            return Res(False, "Phim không đúng")
+
+        infoMovie = movies[0]
+        timeMovie = infoMovie[4]
+        playAt = playAt - 15 * 60
+        endPlay = playAt + timeMovie * 60
+        roomId = room.split()[1]
+        calendars = self.lichChieuRepository.get_all_calendar(playAt, endPlay, roomId)
+
+        if calendars is None:
+            return Res(False, "Lỗi truy vấn")
+
+        if len(calendars) > 0:
+            return Res(False, "Trùng lịch chiếu")
+
+        id = (
+            f"CALENDAR_{int(gen_time.getNowTimestamp())}_{gen_number.genarateNumber(3)}"
+        )
+
+        inserted = self.lichChieuRepository.add_calendar(id, movie, playAt, roomId)
+        if inserted == 0:
+            return Res(False, "Thêm thất bại")
+
+        return Res(True)

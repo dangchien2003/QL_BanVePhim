@@ -2,7 +2,6 @@ import sys
 import os
 
 
-
 sys.path.append(
     os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
 )
@@ -204,10 +203,10 @@ class MainAdmin(QtWidgets.QMainWindow):
 
     def showThemLichChieu(self):
         self.clearLayout()
-        child_widget = QtWidgets.QWidget()
-        child_ui = Ui_them_lichchieu()
-        child_ui.setupUi(child_widget)
-        self.view.addWidget(child_widget)
+        self.child_widget = QtWidgets.QWidget()
+        self.child_ui = Ui_them_lichchieu()
+        self.child_ui.setupUi(self.child_widget)
+        self.view.addWidget(self.child_widget)
 
 
 if __name__ == "__main__":

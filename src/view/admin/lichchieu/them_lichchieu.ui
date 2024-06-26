@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1000</width>
-    <height>1301</height>
+    <height>919</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -97,7 +97,7 @@ color: rgb(255, 92, 43);</string>
    <widget class="QTextEdit" name="txt_phongchieu">
     <property name="geometry">
      <rect>
-      <x>590</x>
+      <x>600</x>
       <y>280</y>
       <width>221</width>
       <height>31</height>
