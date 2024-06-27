@@ -81,10 +81,11 @@ class LichChieuService:
 
         infoMovie = movies[0]
         timeMovie = infoMovie[4]
-        playAt = playAt - 15 * 60
         endPlay = playAt + timeMovie * 60
         roomId = room.split()[1]
-        calendars = self.lichChieuRepository.get_all_calendar(playAt, endPlay, roomId)
+        calendars = self.lichChieuRepository.get_all_calendar(
+            playAt - 15 * 60, endPlay, roomId
+        )
 
         if calendars is None:
             return Res(False, "Lỗi truy vấn")
@@ -126,10 +127,11 @@ class LichChieuService:
             return Res(False, "Phim không đúng")
         infoMovie = movies[0]
         timeMovie = infoMovie[4]
-        playAt = playAt - 15 * 60
         endPlay = playAt + timeMovie * 60
         roomId = room.split()[1]
-        calendars = self.lichChieuRepository.get_all_calendar(playAt, endPlay, roomId)
+        calendars = self.lichChieuRepository.get_all_calendar(
+            playAt - 15 * 60, endPlay, roomId
+        )
 
         if calendars is None:
             return Res(False, "Lỗi truy vấn")
