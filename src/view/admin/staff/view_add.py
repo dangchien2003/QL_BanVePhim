@@ -184,6 +184,7 @@ class Ui_AddStaff(object):
             QtWidgets.QMessageBox.warning(None, "Lỗi", result.message)
             return
         QtWidgets.QMessageBox.information(None, "Thông báo", "Thêm thành công")
+        self.password.setText("")
 
     def selectNam(self, event):
         self.sex = 1
