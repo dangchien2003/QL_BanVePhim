@@ -19,6 +19,7 @@ class Ui_TKphim(object):
         self.listMovies = []
         self.lichChieuController = LichChieuController()
         self.tkPhimController = TkPhimController()
+        self.index = 0
 
     def setupUi(self, TKphim):
         TKphim.setObjectName("TKphim")
@@ -161,6 +162,10 @@ class Ui_TKphim(object):
 
     def setEvents(self):
         self.button_timkiem.mousePressEvent = self.thongke
+        # self.nameMovie.currentIndexChanged.connect(self.changeName)
+
+    # def changeName(self):
+    #     self.index = self.nameMovie.currentIndex()
 
     def loadMovies(self):
         response = self.lichChieuController.fetch_movie()
@@ -185,8 +190,10 @@ class Ui_TKphim(object):
         )
         if response.success == False:
             toast.toastWarning(response.message)
+            self.nameMovie.setCurrentIndex(self.index)
             return
         self.putdata(response.data)
+        self.index = self.nameMovie.currentIndex()
 
     def putdata(self, data: list[object]):
         self.tableWidget_2.setRowCount(len(data))

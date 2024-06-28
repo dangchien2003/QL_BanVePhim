@@ -19,7 +19,7 @@ class LichChieuRepository:
 
     def fetch_all_movie_names(self):
         query = (
-            f"select movie.id, movie.name, movie.time from movie where hideAt is null"
+            f"select movie.id, movie.name, movie.time from movie"
         )
         return self.excute.getAll(query)
 
