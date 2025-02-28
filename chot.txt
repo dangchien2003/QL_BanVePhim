@@ -1,0 +1,5 @@
+python-dotenv==1.0.1
+opencv-python==4.10.0.82
+mysql-connector-python==8.4.0
+pyzbar==0.1.9
+cài  vcredist_x64.exe nếu lỗi không tìm thấy libzbar-64.dll

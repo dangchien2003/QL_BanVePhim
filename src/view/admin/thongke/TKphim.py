@@ -10,6 +10,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 from src.controller.LichChieu_controller import LichChieuController
 from src.controller.tkphim_controller import TkPhimController
 from src.util import toast
+from datetime import datetime
 
 
 class Ui_TKphim(object):
@@ -113,7 +114,7 @@ class Ui_TKphim(object):
         self.box_nam.setStyleSheet("border:707070;")
         self.box_nam.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.box_nam.setMinimum(2018)
-        self.box_nam.setMaximum(2024)
+        self.box_nam.setMaximum(datetime.now().year)
         self.box_nam.setObjectName("box_nam")
         self.button_timkiem = QtWidgets.QPushButton(parent=self.groupBox_theothoigian)
         self.button_timkiem.setGeometry(QtCore.QRect(180, 290, 81, 41))

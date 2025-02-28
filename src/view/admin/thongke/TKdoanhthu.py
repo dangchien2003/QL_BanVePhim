@@ -10,6 +10,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 from src.controller.TKdoanhthu_controller import TKdoanhthu_controller
 from src.util import toast
 from src.model.dulieudoanhthu import DuLieuDoanhThu
+from datetime import datetime
 
 
 class Ui_TKdoanhthu(object):
@@ -107,7 +108,7 @@ class Ui_TKdoanhthu(object):
         self.box_nam.setStyleSheet("border:707070;")
         self.box_nam.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.box_nam.setMinimum(2018)
-        self.box_nam.setMaximum(2024)
+        self.box_nam.setMaximum(datetime.now().year)
         self.box_nam.setObjectName("box_nam")
         self.button_timkiem = QtWidgets.QPushButton(parent=self.groupBox_theothoigian)
         self.button_timkiem.setGeometry(QtCore.QRect(180, 290, 81, 41))
