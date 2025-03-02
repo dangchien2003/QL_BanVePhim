@@ -68,7 +68,7 @@ CREATE TABLE `movie` (
 
 INSERT INTO `movie` (`id`, `name`, `age`, `minPrice`, `hideAt`, `createAt`, `time`, `image`) VALUES
 ('1', 'cô dâu 8 tuổi', 16, 31000, NULL, 20, 90, NULL),
-('MOVIE_1717866136_46521', 'chiến tranh 1', 1, 45000, NULL, 1717866136, 120, NULL),
+('MOVIE_1717866136_46521', 'test111 tranh 1', 1, 45000, NULL, 1717866136, 120, NULL),
 ('MOVIE_1717866136_55853', 'tình yêu 1', 16, 50000, NULL, 1717866136, 130, NULL),
 ('MOVIE_1717866136_60078', 'tình yêu 2', 16, 100000, NULL, 1717866136, 150, NULL),
 ('MOVIE_1718110145_27760', 'Ngày mai nắng lên', 2, 45000, NULL, 1718110146, 120, NULL),
@@ -149,16 +149,16 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`idnv`, `name`, `sdt`, `email`, `sex`, `rank`, `blockAt`, `password`) VALUES
-('123admin', 'admin1', '0815565487', 'chienboy03@gmail.com', 1, 'admin', NULL, 'xAqQiyJAjBg6vDs4EZ3Nb8QxcpJC/Sg1PLuFmoCIPkTehXlydt+haJgdkrZ2hxgM'),
-('123staff', 'staff', NULL, 'staff@gmail.com', 0, 'staff', 1717695749, 'RU9DgfFK+uosq6NUPkuSBh+jo+ROvkzWVqMtZX17ErSYSP/lgHsOzEI7RcNyaGmB'),
-('STAFF_1717668565_587', 'chien', '0333757429', 'abc@gmail.com', 1, 'staff', NULL, 'VE+Se067WVdJoCv+nQC1IOSz/fmc6FWUMyqtHdh1ddzLTMDXc2eQASHoIITiyngn'),
-('STAFF_1717751387_626', 'chiến điên', '1234', 'phuongthanh18032003@gmail.com', 0, 'staff', 1719147344, 'VE+Se067WVdJoCv+nQC1IOSz/fmc6FWUMyqtHdh1ddzLTMDXc2eQASHoIITiyngn'),
-('STAFF_1718804614_027', 'lê đăng chiến', '0333757429', 'chein@gmail.com', 1, 'staff', 1719226700, 'xd9taaNi4Aqb/l+63C+JzvPGA8yYGmx681U8AuaWhPf25aQ66ftw2le6hE90zpK+'),
-('STAFF_1719030705_750', 'Lê đăng chiên', '1232', 'chein111@gmail.com', 1, 'staff', 1719332402, 'kswXoT1HNRzBBuBvGuc5KPIjYs/W/578V7naY2FAHsvcr4XTYg4I+q6hieTN8Q2m'),
-('STAFF_1719031048_781', 'các', 'cacc', 'chcacscs@gmail.com', 1, 'staff', 1719239409, 'tlZmjGbiayhqNWXUY/wQ7p9YUr15MOABqCW6mIVK8EQIoBE0wi4h9KFoHPaZ/KUO'),
-('STAFF_1719040131_181', 'chiến1', 'cscdc', 'cssdcs@gmail.com', 1, 'staff', 1719227484, '+jO9DAs3i3TYE1p3d3B5Q/bzHmtDgLwnAGI4l/rDB0Za50dDLi3Npaw2TFq5idIW'),
-('STAFF_1719051119_42', 'dgf', 'gfdgf', 'chiiin@gmail.com', 1, 'staff', 1719239036, 'PnoKRxKR2Rf+KpodQVN+ldN93oITT4AVN7YGqEPkMlE2DDK2ZoyqfeteSlCPPacX'),
-('STAFF_1719051490_917', 'hhhh', '123', 'acscsc@gmail.com', 0, 'staff', 1719238331, 'T2f8SvqE7P2UEDw8yIexF9jf/FREVPrETUqEG2+HlvaqkXnXKblVGqACCQsbXsIk');
+('123admin', 'admin1', '0815565487', 'admin@gmail.com', 1, 'admin', NULL, 'VE+Se067WVdJoCv+nQC1IOSz/fmc6FWUMyqtHdh1ddzLTMDXc2eQASHoIITiyngn'),
+('123staff', 'staff', NULL, 'staff@gmail.com', 0, 'staff', 1717695749, 'VE+Se067WVdJoCv+nQC1IOSz/fmc6FWUMyqtHdh1ddzLTMDXc2eQASHoIITiyngn'),
+('STAFF_1717668565_587', 'test1', '0333757444', 'abc@gmail.com', 1, 'staff', NULL, 'VE+Se067WVdJoCv+nQC1IOSz/fmc6FWUMyqtHdh1ddzLTMDXc2eQASHoIITiyngn'),
+('STAFF_1717751387_626', 'test2', '1234', 'test2@gmail.com', 0, 'staff', 1719147344, 'VE+Se067WVdJoCv+nQC1IOSz/fmc6FWUMyqtHdh1ddzLTMDXc2eQASHoIITiyngn'),
+('STAFF_1718804614_027', 'test111 test111', '0333757444', 'chein@gmail.com', 1, 'staff', 1719226700, 'VE+Se067WVdJoCv+nQC1IOSz/fmc6FWUMyqtHdh1ddzLTMDXc2eQASHoIITiyngn'),
+('STAFF_1719030705_750', 'cccte ccccc kkkk', '1232', 'chein111@gmail.com', 1, 'staff', 1719332402, 'VE+Se067WVdJoCv+nQC1IOSz/fmc6FWUMyqtHdh1ddzLTMDXc2eQASHoIITiyngn'),
+('STAFF_1719031048_781', 'các', 'cacc', 'chcacscs@gmail.com', 1, 'staff', 1719239409, 'VE+Se067WVdJoCv+nQC1IOSz/fmc6FWUMyqtHdh1ddzLTMDXc2eQASHoIITiyngn'),
+('STAFF_1719040131_181', 'test1111', 'cscdc', 'cssdcs@gmail.com', 1, 'staff', 1719227484, 'VE+Se067WVdJoCv+nQC1IOSz/fmc6FWUMyqtHdh1ddzLTMDXc2eQASHoIITiyngn'),
+('STAFF_1719051119_42', 'dgf', 'gfdgf', 'chiiin@gmail.com', 1, 'staff', 1719239036, 'VE+Se067WVdJoCv+nQC1IOSz/fmc6FWUMyqtHdh1ddzLTMDXc2eQASHoIITiyngn'),
+('STAFF_1719051490_917', 'hhhh', '123', 'acscsc@gmail.com', 0, 'staff', 1719238331, 'VE+Se067WVdJoCv+nQC1IOSz/fmc6FWUMyqtHdh1ddzLTMDXc2eQASHoIITiyngn');
 
 -- --------------------------------------------------------
 
@@ -189,24 +189,24 @@ CREATE TABLE `ticket` (
 
 INSERT INTO `ticket` (`id`, `idCalendar`, `name`, `numPerson`, `numPopcorn`, `numWater`, `priceTicket`, `pricePopcorn`, `priceWater`, `email`, `createBy`, `createAt`, `checkinAt`, `checkinBy`) VALUES
 ('1', '2', '1', 1, 1, 1, 1, 1, 1, 'hhh', '123staff', 4324, NULL, NULL),
-('TICKET_1718439182_576', '2', 'lê đăng chiến', 2, 1, 1, 90000, 30000, 35000, 'ads@gmail.com', 'STAFF_1717668565_587', 0, NULL, NULL),
-('TICKET_1718439357_648', '2', 'lê đăng chiến', 2, 1, 1, 90000, 30000, 35000, 'ads@gmail.com', 'STAFF_1717668565_587', 1718439359, NULL, NULL),
+('TICKET_1718439182_576', '2', 'test111 test111', 2, 1, 1, 90000, 30000, 35000, 'ads@gmail.com', 'STAFF_1717668565_587', 0, NULL, NULL),
+('TICKET_1718439357_648', '2', 'test111 test111', 2, 1, 1, 90000, 30000, 35000, 'ads@gmail.com', 'STAFF_1717668565_587', 1718439359, NULL, NULL),
 ('TICKET_1718439728_886', '2', 'câcscs', 1, 1, 1, 45000, 30000, 35000, 'csacs@gmail.com', 'STAFF_1717668565_587', 1718439741, NULL, NULL),
 ('TICKET_1718439776_819', '2', 'câcsc', 2, 2, 2, 90000, 60000, 70000, 'fasfs@gmail.com', 'STAFF_1717668565_587', 1718439782, NULL, NULL),
-('TICKET_1718440736_653', '2', 'chiến', 3, 1, 1, 141750, 30000, 35000, 'chien@gmail.com', 'STAFF_1717668565_587', 1718440749, NULL, NULL),
-('TICKET_1718537782_700', '2', 'Trần Phương Thanh', 2, 2, 2, 94500, 60000, 70000, 'chienboy03@gmail.com', 'STAFF_1717668565_587', 1718537784, NULL, NULL),
-('TICKET_1718538045_283', '2', 'chiến', 1, 1, 1, 47250, 30000, 35000, 'chienboy03@gmail.com', 'STAFF_1717668565_587', 1718538047, NULL, NULL),
-('TICKET_1718538109_757', '2', 'Trần Phương Thanh', 1, 1, 1, 47250, 30000, 35000, 'chienboy03@gmail.com', 'STAFF_1717668565_587', 1718538111, NULL, NULL),
-('TICKET_1718538515_876', '2', 'Lê Đăng Chiến', 2, 2, 2, 121500, 60000, 70000, 'Chienboy03@gmail.com', 'STAFF_1717668565_587', 1718538517, NULL, NULL),
-('TICKET_1718538721_113', '2', 'Lê đăng chiến', 2, 1, 10, 94500, 30000, 350000, 'chienboy03@gmail.com', 'STAFF_1717668565_587', 1718538723, NULL, NULL),
-('TICKET_1718538948_273', '2', 'lê đăng chiến', 1, 1, 1, 47250, 30000, 35000, 'chienboy03@gmail.com', 'STAFF_1717668565_587', 1718538950, NULL, NULL),
-('TICKET_1718538993_633', '2', 'chiến', 2, 1, 1, 99000, 30000, 35000, 'chienboy03@gmail.com', 'STAFF_1717668565_587', 1718538995, NULL, NULL),
-('TICKET_1718539330_835', '2', 'vdsvdsd', 1, 0, 0, 49500, 0, 0, 'chienboy03@gmail.com', 'STAFF_1717668565_587', 1718539333, NULL, NULL),
-('TICKET_1718540040_528', '2', 'vsdvd', 2, 1, 1, 99000, 30000, 35000, 'chienboy03@gmail.com', 'STAFF_1717668565_587', 1718540041, NULL, NULL),
-('TICKET_1718540253_585', '2', 'đâs', 1, 1, 1, 49500, 30000, 35000, 'chienboy03@gmail.com', 'STAFF_1717668565_587', 1718540255, 1718563537, NULL),
-('TICKET_1718540419_436', '2', 'csac', 2, 1, 1, 99000, 30000, 35000, 'chienboy03@gmail.com', 'STAFF_1717668565_587', 1718540420, 1718563595, NULL),
-('TICKET_1718788896_253', '2', 'chiến', 2, 1, 1, 99000, 30000, 35000, 'chienboy03@gmail.com', 'STAFF_1717668565_587', 1718788899, NULL, NULL),
-('TICKET_1718960610_858', '2', 'chiến', 2, 0, 0, 103500, 0, 0, 'chienboy03@gmail.com', 'STAFF_1717668565_587', 1718960612, NULL, NULL);
+('TICKET_1718440736_653', '2', 'test111', 3, 1, 1, 141750, 30000, 35000, 'test@gmail.com', 'STAFF_1717668565_587', 1718440749, NULL, NULL),
+('TICKET_1718537782_700', '2', 'kkkkkkk', 2, 2, 2, 94500, 60000, 70000, 'testboy03@gmail.com', 'STAFF_1717668565_587', 1718537784, NULL, NULL),
+('TICKET_1718538045_283', '2', 'test111', 1, 1, 1, 47250, 30000, 35000, 'testboy03@gmail.com', 'STAFF_1717668565_587', 1718538047, NULL, NULL),
+('TICKET_1718538109_757', '2', 'kkkkkkk', 1, 1, 1, 47250, 30000, 35000, 'testboy03@gmail.com', 'STAFF_1717668565_587', 1718538111, NULL, NULL),
+('TICKET_1718538515_876', '2', 'cccte ttttt test', 2, 2, 2, 121500, 60000, 70000, 'test@gmail.com', 'STAFF_1717668565_587', 1718538517, NULL, NULL),
+('TICKET_1718538721_113', '2', 'cccte ccccc test111', 2, 1, 10, 94500, 30000, 350000, 'testboy03@gmail.com', 'STAFF_1717668565_587', 1718538723, NULL, NULL),
+('TICKET_1718538948_273', '2', 'test111 test111', 1, 1, 1, 47250, 30000, 35000, 'testboy03@gmail.com', 'STAFF_1717668565_587', 1718538950, NULL, NULL),
+('TICKET_1718538993_633', '2', 'test111', 2, 1, 1, 99000, 30000, 35000, 'testboy03@gmail.com', 'STAFF_1717668565_587', 1718538995, NULL, NULL),
+('TICKET_1718539330_835', '2', 'vdsvdsd', 1, 0, 0, 49500, 0, 0, 'testboy03@gmail.com', 'STAFF_1717668565_587', 1718539333, NULL, NULL),
+('TICKET_1718540040_528', '2', 'vsdvd', 2, 1, 1, 99000, 30000, 35000, 'testboy03@gmail.com', 'STAFF_1717668565_587', 1718540041, NULL, NULL),
+('TICKET_1718540253_585', '2', 'đâs', 1, 1, 1, 49500, 30000, 35000, 'testboy03@gmail.com', 'STAFF_1717668565_587', 1718540255, 1718563537, NULL),
+('TICKET_1718540419_436', '2', 'csac', 2, 1, 1, 99000, 30000, 35000, 'testboy03@gmail.com', 'STAFF_1717668565_587', 1718540420, 1718563595, NULL),
+('TICKET_1718788896_253', '2', 'test111', 2, 1, 1, 99000, 30000, 35000, 'testboy03@gmail.com', 'STAFF_1717668565_587', 1718788899, NULL, NULL),
+('TICKET_1718960610_858', '2', 'test111', 2, 0, 0, 103500, 0, 0, 'testboy03@gmail.com', 'STAFF_1717668565_587', 1718960612, NULL, NULL);
 
 --
 -- Chỉ mục cho các bảng đã đổ

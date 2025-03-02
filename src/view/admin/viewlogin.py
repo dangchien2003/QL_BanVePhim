@@ -89,8 +89,8 @@ class Ui_Login(QtWidgets.QMainWindow):
         self.label_2.setText(_translate("Login", "Email"))
         self.label_3.setText(_translate("Login", "Mật khẩu"))
         self.pushButton.setText(_translate("Login", "Đăng nhập với admin"))
-        self.lineEdit.setText("chienboy03@gmail.com")
-        self.lineEdit_2.setText("admin")
+        self.lineEdit.setText("admin@gmail.com")
+        self.lineEdit_2.setText("staff")
 
     def setEvents(self):
         # click
